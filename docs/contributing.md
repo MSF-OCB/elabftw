@@ -44,3 +44,14 @@ cd $CODE_DIR
 ```
 
 The app is now accessible at https://localhost/
+
+
+## Update Docker containers
+
+Enable debug mode to disable the caching of Twig templates.
+
+- Container shell: `docker exec -it surveyo-mysql bash`
+- MySQL shell: `mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE`
+- Run SQL: `UPDATE config SET conf_value = '1' WHERE conf_name = 'debug';`
+- Exit MySQL shell: `exit;` (or `ctrl + d`)
+- Exit container shell: `exit` (or `ctrl + d`)
