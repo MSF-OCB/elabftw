@@ -35,6 +35,12 @@ cd $CODE_DIR/src
 composer install; yarn install
 ```
 
+**Install Grunt**
+
+```
+npm install -g grunt-cli
+```
+
 
 ## Start the servers
 
@@ -55,3 +61,13 @@ Enable debug mode to disable the caching of Twig templates.
 - Run SQL: `UPDATE config SET conf_value = '1' WHERE conf_name = 'debug';`
 - Exit MySQL shell: `exit;` (or `ctrl + d`)
 - Exit container shell: `exit` (or `ctrl + d`)
+
+
+## Common commands
+
+- Regenerate JS and CSS: `grunt`
+- Regenerate CSS: `grunt css`
+- Regenerate JS: `grunt js`
+- Run the unit tests: `grunt unit`
+- Run the unitand acceptance  tests: `grunt test`
+- Generate a PHP Docblock documentation: `grunt api`
