@@ -139,6 +139,7 @@
 
 {{ include('uploads.html') }}
 
+{# @DEACTIVATED
 {% if Entity.type == 'experiments' %}
     <section id='expcomment_container'>
         <div id='expcomment' class='box'>
@@ -163,8 +164,8 @@
             </div>
         </div>
     </section>
-
 {% endif %}
+#}
 
 <div id='entityInfos'
     data-title='{{ cleanTitle }}'
