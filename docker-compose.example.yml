@@ -1,0 +1,99 @@
+# docker-elabftw configuration file
+# use : "docker-compose up -d" to start containers
+# https://hub.docker.com/r/elabftw/elabimg/
+# https://www.elabftw.net
+
+# our first container is nginx + php-fpm + elabftw
+web:
+    image: elabftw/elabimg:dev
+    restart: always
+    container_name: elabftw
+    # drop some capabilities
+    cap_drop:
+        - SYS_ADMIN
+        - AUDIT_WRITE
+        - MKNOD
+        - SYS_CHROOT
+        - SETFCAP
+        - NET_RAW
+        - SYS_PTRACE
+    environment:
+        # no need to change
+        - DB_HOST=mysql
+        # no need to change
+        - DB_NAME=elabftw
+        # no need to change
+        - DB_USER=elabftw
+        # need to change
+        - DB_PASSWORD=secr3t
+        # ---------------------------------------------------
+        # /!\/!\/!\/!\/!\ EDIT THE LINE BELOW /!\/!\/!\/!\/!\
+
+        # get your secret key from https://demo.elabftw.net/install/generateSecretKey.php
+        # if you don't want to get it from an external source you can also do that:
+        # docker run -t --entrypoint '/bin/sh' elabftw/elabimg -c "php /elabftw/install/generateSecretKey.php"
+        - SECRET_KEY=
+
+        # /!\/!\/!\/!\/!\ EDIT THE LINE ABOVE /!\/!\/!\/!\/!\
+        # ---------------------------------------------------
+
+        # optional: change to your server name in nginx config
+        - SERVER_NAME=localhost
+        # optional: disable https, use this to have an http server listening on port 443
+        # useful if the SSL stack is handled by haproxy or something alike
+        - DISABLE_HTTPS=false
+        # set to true to use letsencrypt certificates
+        # note: does nothing if DISABLE_HTTPS is set to true
+        - ENABLE_LETSENCRYPT=false
+        # no need to change
+        - MAX_PHP_MEMORY=256M
+        # no need to change
+        - MAX_UPLOAD_SIZE=100M
+        # better if changed (see list of available values: http://php.net/manual/en/timezones.php
+        - PHP_TIMEZONE=Europe/Paris
+    ports:
+        # if you want elabftw to run on a different port, change the first number
+        # host:container
+        - "3148:443"
+    volumes:
+
+        # ---------------------------------------------------
+        # /!\/!\/!\/!\/!\ EDIT THE LINE BELOW /!\/!\/!\/!\/!\
+
+        # should be $dev/elabftw:/elabftw
+        - /home/<YOUR USERNAME>/elabdev/elabftw:/elabftw
+
+        # /!\/!\/!\/!\/!\ EDIT THE LINE ABOVE /!\/!\/!\/!\/!\
+        # ---------------------------------------------------
+
+        # if you've enabled letsencrypt, uncomment the line below
+        # path to the folder with SSL certificates (must contain fullchain.pem and privkey.pem)
+        # host:container
+        #- /etc/letsencrypt:/ssl
+
+    links:
+        - mysql
+mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql
+    # drop some capabilities
+    cap_drop:
+        - AUDIT_WRITE
+        - MKNOD
+        - SYS_CHROOT
+        - SETFCAP
+        - NET_RAW
+    environment:
+        # need to change
+        - MYSQL_ROOT_PASSWORD=secr3t
+        # no need to change
+        - MYSQL_DATABASE=elabftw
+        # no need to change
+        - MYSQL_USER=elabftw
+        # need to change
+        - MYSQL_PASSWORD=secr3t
+    volumes:
+        # this is where you will keep the database persistently
+        # host:container
+        - /var/elabftw/mysql:/var/lib/mysql
