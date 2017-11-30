@@ -9,15 +9,15 @@
  */
 
 /*
-343434 => very dark gray (main nav bg)
-797979 => gray main text color
+343434 => very dark gray (main nav bg)	>> EE0000	MSF Red but not for everything
+797979 => gray main text color			>> 556166	MSF slate grey
 f2f2f2 => very light gray
 dcdddc = > borders gray
-29AEB9 => blue
-1F8591 => dark blue
-C4F9FF => light blue
+29AEB9 => blue							>> EE0000
+1F8591 => dark blue						>> BB0000	or A20000
+C4F9FF => light blue					>> FF2222 	or ffa0a0 if we need event lighter
 dd1e00 => dark red
-ffc1b7 => light red
+ffc1b7 => light red						>> FF6f6f
 */
 
 /* Font is Lato */
@@ -61,12 +61,12 @@ body:before {
 
 /* LINKS */
 a {
-    color: #29AEB9;
+    color: #EE0000;
     text-decoration:none;
 }
 
 a:hover {
-    color:#29AEB9;
+    color:#EE0000;
     text-decoration:none;
 }
 
@@ -96,7 +96,7 @@ li.inline {
 input, select, textarea {
     padding:7px;
     background-color:#F2F2F2;
-    color:#797979;
+    color:#556166;
     border-radius: 4px;
     border: 1px #e3e3e3 solid;
     margin:5px 0;
@@ -119,7 +119,7 @@ select{
 }
 
 .form-control:focus, #dropdownMenu1:focus {
-    border-color:#29AEB9;
+    border-color:#EE0000;
     box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(41,174,185,.6);
 }
 
@@ -166,13 +166,13 @@ hr {
 /* TITLES */
 h2 {
     font-weight:normal;
-    color: #797979;
+    color: #556166;
     font-size: 30px;
     margin-top: 0;
 }
 
 h3 {
-    color: #797979;
+    color: #556166;
     font-size: 150%;
     margin: 0 auto 10px auto;
 }
@@ -180,13 +180,13 @@ h3 {
 h4 {
     font-size: 150%;
     font-weight:normal;
-    color: #797979;
+    color: #556166;
     margin: 0 auto 10px auto;
 }
 
 /* paragraphs */
 p {
-    color:#797979;
+    color:#556166;
 }
 
 p a {
@@ -194,7 +194,7 @@ p a {
 }
 
 label {
-    color:#797979;
+    color:#556166;
     font-size:120%;
     font-weight:normal;
 }
@@ -205,7 +205,7 @@ label {
 .tip:before {
     content: "☺ ";
     font-size:120%;
-    color: #29AEB9;
+    color: #EE0000;
 }
 .tip::before a, .tip::before a:hover {
     color: #343434;
@@ -217,14 +217,14 @@ label {
 }
 #help {
     cursor: pointer;
-    color: #797979;
+    color: #556166;
 }
 
 /* END HELP CONTAINER /*
 
 /* BEGIN NAV */
 .navbar {
-    background-color:#343434;
+    background-color:#ee0000;
     padding: 0 5%;
     border-radius: 0;
     border: 0;
@@ -236,12 +236,12 @@ label {
 nav a {
     font-size:90%;
     text-transform:uppercase;
-    color: #888;
+    color: #DDD;
     text-decoration: none;
 }
 /* blue on hover */
 nav a:hover {
-    color:#29AEB9 !important;
+    color:#FFFFFF !important;
     transition-duration: 500ms;
 }
 /* we want the border bottom to be same width as the text */
@@ -253,8 +253,8 @@ ul.nav li a {
 }
 /* selected nav entry */
 ul.nav li.active a {
-    border-bottom:6px #29AEB9 solid;
-    background-color:#343434 !important;
+    border-bottom:6px #FF2222 solid;
+    background-color:#ee0000 !important;
     color: white !important;
 }
 
@@ -293,11 +293,11 @@ menu ul li {
     display:inline;
     margin-right: 2%;
     text-transform: uppercase;
-    color: #797979;
+    color: #556166;
     cursor: pointer;
 }
 menu ul li.selected {
-    border-bottom:5px #29AEB9 solid;
+    border-bottom:5px #EE0000 solid;
     padding-bottom:0;
 }
 
@@ -320,14 +320,14 @@ menu ul li.selected {
 }
 
 .alert-success {
-    background-color: #C4F9FF;
+    background-color: #FF2222;
     color: #36b1c0;
     border-color: #36b1c0;
 }
 
 .alert-danger {
     color: #e6614c;
-    background-color: #ffc1b7;
+    background-color: #FF6F6F;
     border-color: #e6614c;
 }
 .alert-danger a.close{
@@ -461,14 +461,14 @@ section.item {
     color: #FFFFFF;
     font-size: 11px;
     text-transform: uppercase;
-    background-color: #29AEB9;
+    background-color: #EE0000;
     margin: 0 5px;
     letter-spacing: 1px;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: #1F8591;
+    background-color: #BB0000;
 }
 
 .button:disabled {
@@ -541,7 +541,7 @@ section.item {
     display:inline-block;
     transform: rotate(35deg);
     line-height: 80%;
-    background: #29AEB9;
+    background: #EE0000;
     color: #fff;
     font-size: 10px;
     padding: 4px;
@@ -572,7 +572,7 @@ github issue #52 */
 summary:before {
     content: "► ";
     font-size:120%;
-    color: #29AEB9;
+    color: #EE0000;
 }
 
 /* fix the list in the body */
@@ -598,7 +598,7 @@ section.item div.txt {
 
 /* prettier tables in mceditable area */
 div.txt table, div.txt table td {
-    border: 1px solid #797979;
+    border: 1px solid #556166;
 }
 
 table td {
@@ -610,7 +610,7 @@ table td input{
 
 table th {
     background-color:#dcdddc;
-    color: #797979;
+    color: #556166;
     text-transform: uppercase;
     font-size: 90%;
     padding: 5px 15px;
@@ -657,11 +657,11 @@ tr:nth-child(odd) {
 }
 
 .overlay-ok {
-    background-color: #29AEB9;
+    background-color: #EE0000;
 }
 
 .overlay-ko, .overlay-ko p {
-    background-color: #ffc1b7;
+    background-color: #FF6F6F;
     color: #000;
 }
 /* END OVERLAY */
@@ -677,7 +677,7 @@ tr:nth-child(odd) {
 }
 
 .item a p:hover {
-    color:#29AEB9;
+    color:#EE0000;
 }
 
 .box {
@@ -740,7 +740,7 @@ input[type='checkbox']{
 }
 
 .top_right_status {
-    color: #797979;
+    color: #556166;
     float:right;
 }
 .top_right_status img {
@@ -749,7 +749,7 @@ input[type='checkbox']{
 
 .danger-zone-area{
     border-color: #e6614c;
-    background-color: #ffc1b7;
+    background-color: #FF6F6F;
     color: #e6614c;
     margin: 10px 0 0;
 }
@@ -798,7 +798,7 @@ input[type='checkbox']{
 /* Bootstrap fixes */
 .btn-elab{
     color:#fff;
-    background-color:#29AEB9;
+    background-color:#EE0000;
     border-color:#01929e;
     margin-right: 10px;
 }
@@ -844,7 +844,7 @@ input[type='checkbox']{
     margin: 5px 0;
     padding: 5px;
     border-radius: 5 0 5px 0;
-    border-left: 3px solid #797979;
+    border-left: 3px solid #556166;
 }
 .expcomment_box p:hover {
     background-color:#555;
@@ -862,12 +862,12 @@ input[type='checkbox']{
     color: #FFFFFF;
     font-size: 11px;
     text-transform: uppercase;
-    background-color: #29AEB9;
+    background-color: #EE0000;
     margin: 0 5px;
     letter-spacing: 1px;
 }
 .editable button:hover {
-    background-color: #1F8591;
+    background-color: #BB0000;
 }
 
 .editable input{
@@ -897,7 +897,7 @@ input[type='checkbox']{
 }
 
 .title a:hover {
-    color:#29AEB9 !important;
+    color:#EE0000 !important;
     transition-duration: 500ms;
 }
 
@@ -919,7 +919,7 @@ input[type='checkbox']{
 }
 .tags a {
     text-decoration: none;
-    color:#29AEB9;
+    color:#EE0000;
 }
 .tags a:hover {
     color: #343434;
@@ -946,8 +946,8 @@ input[type='checkbox']{
 
 /* on ucp.php */
 #currpass {
-    background-color: #c4f9ff;
-    border: 1px solid #29AEB9;
+    background-color: #FF2222;
+    border: 1px solid #EE0000;
 }
 
 .txt {
@@ -970,7 +970,7 @@ input[type='checkbox']{
 /* elabid */
 .elabid {
     text-align:right;
-    color: #797979;
+    color: #556166;
     font-size: 11px;
 }
 
@@ -982,11 +982,11 @@ footer {
     padding: 10px 0 0 0;
 }
 footer div, footer div a, footer p, footer p a {
-    color: #797979;
+    color: #556166;
     font-size: 11px;
 }
 footer div a:hover {
-    color: #29AEB9;
+    color: #EE0000;
 }
 
 .footer_left {
@@ -1109,7 +1109,7 @@ code {
     border-radius: 5px;
 }
 .dropzone:hover {
-    border: 1px solid #29AEB9;
+    border: 1px solid #EE0000;
     border-radius: 5px;
 }
 

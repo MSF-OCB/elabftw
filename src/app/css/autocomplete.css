@@ -61,16 +61,16 @@
 .rte-autocomplete >li > a:hover, .rte-autocomplete > li > a:focus, .rte-autocomplete:hover > a, .rte-autocomplete:focus > a {
     color: #fff;
     text-decoration: none;
-    background-color: #0081c2;
-    background-image: linear-gradient(to bottom,#08c,#0077b3);
+    background-color: #BB0000;
+    background-image: linear-gradient(to bottom,#EE0000,#dd1e00);
     background-repeat: repeat-x;
 }
 
 .rte-autocomplete >.active > a, .rte-autocomplete > .active > a:hover, .rte-autocomplete > .active > a:focus {
     color: #fff;
     text-decoration: none;
-    background-color: #0081c2;
-    background-image: linear-gradient(to bottom,#08c,#0077b3);
+    background-color: #BB0000;
+    background-image: linear-gradient(to bottom,#EE0000,#dd1e00);
     background-repeat: repeat-x;
     outline: 0;
 }

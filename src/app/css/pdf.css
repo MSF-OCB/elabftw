@@ -26,13 +26,16 @@
 /* CSS for the PDF generation
 /* This file is minified and used in the makepdf class.
  *
- * 343434 => very dark gray (main nav bg)
- * 797979 => lightgray
- * #29AEB9 => blue
- * 1F8591 => dark blue
- * C4F9FF => light blue
+ *
+ * 343434 => very dark gray (main nav bg)	>> EE0000	MSF Red but not for everything
+ * 797979 => gray main text color			>> 556166	MSF slate grey
+ * f2f2f2 => very light gray
+ * dcdddc = > borders gray
+ * 29AEB9 => blue							>> EE0000
+ * 1F8591 => dark blue						>> BB0000	or A20000
+ * C4F9FF => light blue					>> FF2222 	or ffa0a0 if we need event lighter
  * dd1e00 => dark red
- * ffc1b7 => light red
+ * ffc1b7 => light red						>> FF6f6f
  *
  *
  *
@@ -51,7 +54,7 @@ body {
 }
 
 a {
-    color: #29AEB9;
+    color: #EE0000;
     text-decoration: none;
 }
 
@@ -157,4 +160,3 @@ tr:nth-child(odd) {
     border-top: 1px solid #dcdddc;
     border-radius: 5mm;
 }
-
