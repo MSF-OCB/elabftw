@@ -108,7 +108,7 @@
             results found
         {% endtrans %}
         <a href='#' id='selectAllBoxes'>{{ 'Select all'|trans }}</a>
-        <span id='advancedSelectOptions'> - <a href='#' id='unselectAllBoxes'>{{ 'Clear selection'|trans }}</a> - 
+        <span id='advancedSelectOptions'> - <a href='#' id='unselectAllBoxes'>{{ 'Clear selection'|trans }}</a> -
             <a href='#' id='invertSelection'>{{ 'Invert selection'|trans }}</a></span>
     </p>
 
@@ -173,6 +173,11 @@
                 {% endif %}
                 <span style='text-transform:uppercase;font-size:80%;color:#{{ item.color }}'>{{ item.category }}</span>
                 <span class='date'><img class='image' alt='Date' src='app/img/calendar.png' />{{ item.date|kdate }}</span>
+
+                <span class='author'><img class='image' alt='Author' src='app/img/user.png' />{{ item.fullname }}</span>
+                {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ item.team_name }}</span> #}
+                {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ item.group }}</span> #}
+
                 {% if item.timestamped %}
                     <img src='app/img/stamp.png' alt='stamp' title='experiment timestamped' />
                 {% endif %}

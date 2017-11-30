@@ -185,10 +185,12 @@ abstract class AbstractEntity
                 experiments_comments.recent_comment,
                 SUBSTRING_INDEX(GROUP_CONCAT(stepst.next_step SEPARATOR '|'), '|', 1) AS next_step,
                 CONCAT(users.firstname, ' ', users.lastname) AS fullname";
+                # @TODO $select .= ", teams.team_name";
 
             $from = "FROM experiments";
 
             $usersJoin = "LEFT JOIN users ON (experiments.userid = users.userid)";
+            # @TODO $teamsJoin = "LEFT JOIN teams ON (users.team = teams.team_id)";
             $stepsJoin = "LEFT JOIN (
                 SELECT experiments_steps.item_id AS steps_item_id,
                 experiments_steps.body AS next_step,
@@ -210,6 +212,7 @@ abstract class AbstractEntity
                 $tagsSelect . ' ' .
                 $from . ' ' .
                 $usersJoin . ' ' .
+                # @TODO $teamsJoin . ' ' .
                 $stepsJoin . ' ' .
                 $tagsJoin . ' ' .
                 $statusJoin . ' ' .
