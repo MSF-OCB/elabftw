@@ -68,6 +68,7 @@ Enable debug mode to disable the caching of Twig templates.
 - Regenerate JS and CSS: `grunt`
 - Regenerate CSS: `grunt css`
 - Regenerate JS: `grunt js`
+- Compile translations: `./elabctl compile-messages`
 - Run the unit tests: `grunt unit`
 - Run the unitand acceptance  tests: `grunt test`
 - Generate a PHP Docblock documentation: `grunt api`
