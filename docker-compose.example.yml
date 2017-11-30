@@ -1,3 +1,4 @@
+# @TODO Replace all `<CODE_DIR>` with the path to the source code.
 # docker-elabftw configuration file
 # use : "docker-compose up -d" to start containers
 # https://hub.docker.com/r/elabftw/elabimg/
@@ -7,7 +8,7 @@
 web:
     image: elabftw/elabimg:dev
     restart: always
-    container_name: elabftw
+    container_name: surveyo-web
     # drop some capabilities
     cap_drop:
         - SYS_ADMIN
@@ -18,24 +19,16 @@ web:
         - NET_RAW
         - SYS_PTRACE
     environment:
-        # no need to change
+        # MySQL config (see also the `surveyo-mysql` container)
         - DB_HOST=mysql
-        # no need to change
-        - DB_NAME=elabftw
-        # no need to change
-        - DB_USER=elabftw
-        # need to change
-        - DB_PASSWORD=secr3t
-        # ---------------------------------------------------
-        # /!\/!\/!\/!\/!\ EDIT THE LINE BELOW /!\/!\/!\/!\/!\
+        - DB_NAME=surveyo
+        - DB_USER=surveyo
+        - DB_PASSWORD=  # @TODO Define this.
 
         # get your secret key from https://demo.elabftw.net/install/generateSecretKey.php
         # if you don't want to get it from an external source you can also do that:
         # docker run -t --entrypoint '/bin/sh' elabftw/elabimg -c "php /elabftw/install/generateSecretKey.php"
-        - SECRET_KEY=
-
-        # /!\/!\/!\/!\/!\ EDIT THE LINE ABOVE /!\/!\/!\/!\/!\
-        # ---------------------------------------------------
+        - SECRET_KEY=  # @TODO Define this. Read comments here above.
 
         # optional: change to your server name in nginx config
         - SERVER_NAME=localhost
@@ -50,33 +43,29 @@ web:
         # no need to change
         - MAX_UPLOAD_SIZE=100M
         # better if changed (see list of available values: http://php.net/manual/en/timezones.php
-        - PHP_TIMEZONE=Europe/Paris
+        - PHP_TIMEZONE=Europe/Brussels
     ports:
         # if you want elabftw to run on a different port, change the first number
         # host:container
-        - "3148:443"
+        - "443:443"
     volumes:
-
-        # ---------------------------------------------------
-        # /!\/!\/!\/!\/!\ EDIT THE LINE BELOW /!\/!\/!\/!\/!\
-
-        # should be $dev/elabftw:/elabftw
-        - /home/<YOUR USERNAME>/elabdev/elabftw:/elabftw
-
-        # /!\/!\/!\/!\/!\ EDIT THE LINE ABOVE /!\/!\/!\/!\/!\
-        # ---------------------------------------------------
-
+        # path to elabftw source code
+        - <CODE_DIR>/src:/elabftw
+        # this is where you will keep the uploaded files persistently
+        # remark: must be below the webroot, so not in /var
+        # host:container
+        - <CODE_DIR>/var/uploads:/surveyo/uploads
         # if you've enabled letsencrypt, uncomment the line below
         # path to the folder with SSL certificates (must contain fullchain.pem and privkey.pem)
         # host:container
-        #- /etc/letsencrypt:/ssl
+        - <CODE_DIR>/var/ssl:/ssl
 
     links:
         - mysql
 mysql:
     image: mysql:5.7
     restart: always
-    container_name: mysql
+    container_name: surveyo-mysql
     # drop some capabilities
     cap_drop:
         - AUDIT_WRITE
@@ -85,15 +74,13 @@ mysql:
         - SETFCAP
         - NET_RAW
     environment:
-        # need to change
-        - MYSQL_ROOT_PASSWORD=secr3t
-        # no need to change
-        - MYSQL_DATABASE=elabftw
-        # no need to change
-        - MYSQL_USER=elabftw
-        # need to change
-        - MYSQL_PASSWORD=secr3t
+        # MySQL config (see also the `surveyo-web` container)
+        - MYSQL_ROOT_PASSWORD=  # @TODO Define this.
+        - MYSQL_DATABASE=surveyo
+        - MYSQL_USER=surveyo
+        - MYSQL_PASSWORD=  # @TODO Define this.
+
     volumes:
         # this is where you will keep the database persistently
         # host:container
-        - /var/elabftw/mysql:/var/lib/mysql
+        - <CODE_DIR>/var/mysql:/var/lib/mysql
