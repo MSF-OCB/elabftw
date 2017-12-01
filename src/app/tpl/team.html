@@ -5,12 +5,17 @@
 
 <menu>
     <ul>
+      {# @TODO : place a switch in admin panel to show scheduler or not #}
+      {% if true %}
         <li class='tabhandle' id='tab1'>{{ 'Scheduler'|trans }}</li>
+      {% endif %}
         <li class='tabhandle' id='tab2'>{{ 'Infos'|trans }}</li>
     </ul>
 </menu>
 
 <!-- TAB 1 SCHEDULER -->
+{# @TODO : place a switch in admin panel to show scheduler or not #}
+{% if true %}
 <div class='divhandle' id='tab1div'>
     {% if itemsArr|length == 0 %}
         {{ 'No bookable items.'|trans|msg('warning', false) }}
@@ -37,6 +42,7 @@
     </div>
     {% endif %}
 </div>
+{% endif %}
 
 <!-- TAB 2 INFOS -->
 <div class='divhandle' id='tab2div'>
