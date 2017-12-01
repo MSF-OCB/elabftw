@@ -22,17 +22,19 @@
     <img src='app/img/calendar.png' title='date' alt='Date :' />{{ Entity.entityData.date|kdate }}
 </div>
 <!-- begin action buttons row -->
-{% if not Entity.isReadOnly and not Entity.entityData.locked %}
+{% if not Entity.isReadOnly and not Entity.entityData.locked and App.Session.get('is_visitor') != 1 %}
     <a class='elab-tooltip' href='?mode=edit&id={{ Entity.id }}'>
         <span>{{ 'Edit'|trans }}</span>
         <img src='app/img/pen-blue.png' alt={{ 'Edit'|trans }} />
     </a>
 {% endif %}
 
-<a class='elab-tooltip' href='app/controllers/EntityController.php?duplicate=1&id={{ Entity.id }}&type={{ Entity.type }}'>
-    <span>{{ 'Duplicate'|trans }}</span>
-    <img src='app/img/duplicate.png' alt='Duplicate' />
-</a>
+{% if App.Session.get('is_visitor') != 1 %}
+    <a class='elab-tooltip' href='app/controllers/EntityController.php?duplicate=1&id={{ Entity.id }}&type={{ Entity.type }}'>
+        <span>{{ 'Duplicate'|trans }}</span>
+        <img src='app/img/duplicate.png' alt='Duplicate' />
+    </a>
+{% endif %}
 
 <a class='elab-tooltip' href='make.php?what=pdf&id={{ Entity.id }}&type={{ Entity.type }}'>
     <span>{{ 'Make a PDF'|trans }}</span>
@@ -52,7 +54,7 @@
 {% endif %}
 
 <!-- LOCK -->
-{% if not Entity.isReadOnly %}
+{% if not Entity.isReadOnly and App.Session.get('is_visitor') != 1 %}
     {% set imgSrc = 'unlock.png' %}
     {% set alt = 'Lock/Unlock item'|trans %}
     {% if Entity.entityData.locked %}
@@ -65,7 +67,7 @@
 {% endif %}
 
 <!-- show timestamp button if not timestamped already -->
-{% if not Entity.entityData.timestamped and Entity.isTimestampable and Entity.type == 'experiments' %}
+{% if not Entity.entityData.timestamped and Entity.isTimestampable and Entity.type == 'experiments' and App.Session.get('is_visitor') != 1 %}
     <a class='elab-tooltip'>
         <span>{{ 'Timestamp Experiment'|trans }}</span>
         <img id='confirmTimestamp' src='app/img/stamp.png' alt='Timestamp' />
@@ -90,7 +92,7 @@
 {% endif %}
 
 <!-- TITLE : click on it to go to edit mode only if we are not in read only mode -->
-<div class='{{ not Entity.isReadOnly and not Entity.entityData.locked ? 'click2Edit clickable' }} title_view'>
+<div class='title_view{% if not Entity.isReadOnly and not Entity.entityData.locked and App.Session.get('is_visitor') != 1 %} click2Edit clickable{% endif %}'>
     {% if Entity.type == 'items' %}
         <span style='color:#{{ Entity.entityData.color }}'>{{ Entity.entityData.category }}</span>
     {% endif %}
