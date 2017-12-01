@@ -209,7 +209,7 @@ function help()
         info              Display the configuration variables and status
         install           Configure and install required components
         logs              Show logs of the containers
-        php-logs          Show last 15 lines of nginx error log
+        php-logs          Show last 20 lines of nginx error log
         refresh           Recreate the containers if they need to be
         restart           Restart the containers
         status            Show status of running containers
@@ -475,13 +475,13 @@ function is-installed()
 
 function logs()
 {
-    docker logs mysql
-    docker logs elabftw
+    docker logs surveyo-mysql
+    docker logs surveyo-web
 }
 
 function php-logs()
 {
-    docker exec elabftw tail -n 15 /var/log/nginx/error.log
+    docker exec surveyo-web tail -n 20 /var/log/nginx/error.log
 }
 
 function refresh()
@@ -572,6 +572,7 @@ function uninstall()
     fi
 
     # remove docker images
+    docker rmi elabftw/elabimg:dev || true
     docker rmi elabftw/elabimg || true
     docker rmi mysql:5.7 || true
 
