@@ -18,6 +18,7 @@ dcdddc = > borders gray
 C4F9FF => light blue					>> FF2222 	or ffa0a0 if we need event lighter
 dd1e00 => dark red
 ffc1b7 => light red						>> FF6f6f
+36b1c0>blue used sometime
 */
 
 /* Font is Lato */
@@ -229,14 +230,18 @@ label {
     border-radius: 0;
     border: 0;
     margin-bottom: 5px;
+    color:#ddd;
 }
 .navbar-brand {
     padding: 5px 5px 5px 0;
 }
+.navbar-default .navbar-nav>li>a{
+    color:#ddd;
+}
 nav a {
     font-size:90%;
     text-transform:uppercase;
-    color: #DDD;
+    color: #Fafafa;
     text-decoration: none;
 }
 /* blue on hover */
@@ -253,7 +258,7 @@ ul.nav li a {
 }
 /* selected nav entry */
 ul.nav li.active a {
-    border-bottom:6px #FF2222 solid;
+    border-bottom:6px #FFaaaa solid;
     background-color:#ee0000 !important;
     color: white !important;
 }
@@ -265,7 +270,7 @@ ul.nav li.active a {
     margin-right: -45px;
 }
 #big_search input {
-    background:#555 url(images/search.png) no-repeat scroll right 10px center;
+    background:#fff url(images/search.png) no-repeat scroll right 10px center;
     border: none;
     border-radius: 20px;
     width:50%;
@@ -320,21 +325,21 @@ menu ul li.selected {
 }
 
 .alert-success {
-    background-color: #FF2222;
-    color: #36b1c0;
-    border-color: #36b1c0;
+    background-color: #ccddaa;
+    color: #556166;
+    border-color: #556166;
 }
 
 .alert-danger {
-    color: #e6614c;
-    background-color: #FF6F6F;
-    border-color: #e6614c;
+    color: #556166;
+    background-color: #ffa0a0;
+    border-color: #556166;
 }
 .alert-danger a.close{
     color: #e6614c;
 }
 .alert-sucess a.close{
-    color: #36b1c0;
+    color: #556166;
 }
 
 /* TOOLTIP */
@@ -750,16 +755,16 @@ input[type='checkbox']{
 .danger-zone-area{
     border-color: #e6614c;
     background-color: #FF6F6F;
-    color: #e6614c;
+    color: #556166;
     margin: 10px 0 0;
 }
 .danger-zone-area p, .danger-zone-area p {
     font-size: 120%;
-    color: #e6614c;
+    color: #556166;
 }
 
 .danger-zone-area label{
-    color: #e6614c;
+    color: #556166;
 }
 
 /* EXPERIMENTS/DATABASE - FILTER & ORDER */
