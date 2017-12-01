@@ -23,7 +23,7 @@ web:
         - DB_HOST=mysql
         - DB_NAME=surveyo
         - DB_USER=surveyo
-        - DB_PASSWORD=  # @TODO Define this.
+        - DB_PASSWORD=  # @TODO Define this. Must be the same as `surveyo-mysql.MYSQL_PASSWORD`.
 
         # get your secret key from https://demo.elabftw.net/install/generateSecretKey.php
         # if you don't want to get it from an external source you can also do that:
@@ -78,7 +78,7 @@ mysql:
         - MYSQL_ROOT_PASSWORD=  # @TODO Define this.
         - MYSQL_DATABASE=surveyo
         - MYSQL_USER=surveyo
-        - MYSQL_PASSWORD=  # @TODO Define this.
+        - MYSQL_PASSWORD=  # @TODO Define this. Must be the same as `surveyo-web.DB_PASSWORD`.
 
     volumes:
         # this is where you will keep the database persistently
