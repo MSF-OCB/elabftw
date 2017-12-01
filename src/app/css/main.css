@@ -230,13 +230,13 @@ label {
     border-radius: 0;
     border: 0;
     margin-bottom: 5px;
-    color:#ddd;
+    color:#fee;
 }
 .navbar-brand {
     padding: 5px 5px 5px 0;
 }
 .navbar-default .navbar-nav>li>a{
-    color:#ddd;
+    color:#fee;
 }
 nav a {
     font-size:90%;
@@ -804,14 +804,14 @@ input[type='checkbox']{
 .btn-elab{
     color:#fff;
     background-color:#EE0000;
-    border-color:#01929e;
+    border-color:#556166;
     margin-right: 10px;
 }
 
 .btn-elab.active, .btn-elab.focus, .btn-elab:active, .btn-elab:focus, .btn-elab:hover{
     color:#fff;
-    background-color:#01929e;
-    border-color:#017079;
+    background-color:#A20000;
+    border-color:#556166;
 }
 
 /* fix the white space when columned items don't have the same height */
