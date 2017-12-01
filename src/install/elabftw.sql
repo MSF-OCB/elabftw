@@ -169,6 +169,7 @@ CREATE TABLE `groups` (
   `group_name` text NOT NULL,
   `is_sysadmin` tinyint(1) NOT NULL,
   `is_admin` text NOT NULL,
+  `is_visitor` tinyint(1) NOT NULL,
   `can_lock` text NOT NULL,
   PRIMARY KEY (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -439,11 +440,12 @@ INSERT INTO `experiments_templates` (`team`, `body`, `name`, `userid`) VALUES
 INSERT INTO `teams` (`team_id`, `team_name`, `deletable_xp`, `link_name`, `link_href`) VALUES
 (1, 'Default team', 1, 'Documentation', 'https://doc.elabftw.net');
 /* the groups */
-INSERT INTO `groups` (`group_id`, `group_name`, `is_sysadmin`, `is_admin`, `can_lock`) VALUES
-(1, 'Sysadmins', 1, 1, 0),
-(2, 'Admins', 0, 1, 0),
-(3, 'Chiefs', 0, 1, 1),
-(4, 'Users', 0, 0, 0);
+INSERT INTO `groups` (`group_id`, `group_name`, `is_sysadmin`, `is_admin`, `is_visitor`, `can_lock`) VALUES
+(1, 'Sysadmins', 1, 1, 0, 0),
+(2, 'Admins', 0, 1, 0, 0),
+(3, 'Chiefs', 0, 1, 0, 1),
+(4, 'Users', 0, 0, 0, 0),
+(5, 'Visitors', 0, 0, 1, 0);
 /* the config */
 INSERT INTO `config` (`conf_name`, `conf_value`) VALUES
 ('admin_validate', '1'),

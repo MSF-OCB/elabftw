@@ -130,6 +130,7 @@ class Auth
 
         $this->Request->getSession()->set('is_admin', $group['is_admin']);
         $this->Request->getSession()->set('is_sysadmin', $group['is_sysadmin']);
+        $this->Request->getSession()->set('is_visitor', $group['is_visitor']);
         // create a token
         $this->token = md5(uniqid(rand(), true));
 
