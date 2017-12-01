@@ -178,7 +178,6 @@ try {
             }
 
             $itemsArr = $Entity->read();
-            print_r($itemsArr); die();
         }
 
         $template = 'show.html';
