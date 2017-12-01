@@ -35,7 +35,7 @@ try {
         $linksArr = $Entity->Links->readAll();
 
         // COMMENTS
-        $commentsArr = $Entity->Comments->readAll();
+        # @DEACTIVATED $commentsArr = $Entity->Comments->readAll();
 
         // UPLOADS
         $UploadsView = new UploadsView($Entity->Uploads);
@@ -47,7 +47,7 @@ try {
             'Entity' => $Entity,
             'Uv' => $UploadsView,
             'linksArr' => $linksArr,
-            'commentsArr' => $commentsArr,
+            # @DEACTIVATED 'commentsArr' => $commentsArr,
             'cleanTitle' => Tools::getCleanTitle($Entity->entityData['title']),
             'mode' => 'view'
         );
