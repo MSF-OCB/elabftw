@@ -162,42 +162,42 @@
                     {{ 'Next step'|trans }}: <span style='color:black'>{{ next|raw }}</span>
                     </p>
                 {% endif %}
-<img id='bodyToggleImg_{{ item.id }}' data-type='{{ Entity.type }}' class='bodyToggleImg' src='app/img/show-more.png' title='Show more' alt='+' />
+                <img id='bodyToggleImg_{{ item.id }}' data-type='{{ Entity.type }}' class='bodyToggleImg' src='app/img/show-more.png' title='Show more' alt='+' />
                 <p style='padding-left:20px'>
                     {% if searchPage %}
                         {{ item.fullname|raw }}
                     {% endif %}
                     <input type='checkbox' data-id='{{ item.id }}' data-type='{{ Entity.type }}' style='width:15px;vertical-align:-3px;' />
-                {% if not item.locked and (item.userid == App.Users.userid or Entity.type == 'items') %}
-                <a href='{{ Entity.page }}.php?mode=edit&id={{ item.id }}'><img src='app/img/pen-blue.png' alt='edit' /></a>
-                {% endif %}
-                <span style='text-transform:uppercase;font-size:80%;color:#{{ item.color }}'>{{ item.category }}</span>
-                <span class='date'><img class='image' alt='Date' src='app/img/calendar.png' />{{ item.date|kdate }}</span>
+                    {% if not item.locked and (item.userid == App.Users.userid or Entity.type == 'items') %}
+                        <a href='{{ Entity.page }}.php?mode=edit&id={{ item.id }}'><img src='app/img/pen-blue.png' alt='edit' /></a>
+                    {% endif %}
+                    <span style='text-transform:uppercase;font-size:80%;color:#{{ item.color }}'>{{ item.category }}</span>
+                    <span class='date'><img class='image' alt='Date' src='app/img/calendar.png' />{{ item.date|kdate }}</span>
 
-                <span class='author'><img class='image' alt='Author' src='app/img/user.png' />{{ item.fullname }}</span>
-                {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ item.team_name }}</span> #}
-                {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ item.group }}</span> #}
+                    <span class='author'><img class='image' alt='Author' src='app/img/user.png' />{{ item.fullname }}</span>
+                    {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ item.team_name }}</span> #}
+                    {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ item.group }}</span> #}
 
-                {% if item.timestamped %}
-                    <img src='app/img/stamp.png' alt='stamp' title='experiment timestamped' />
-                {% endif %}
+                    {% if item.timestamped %}
+                        <img src='app/img/stamp.png' alt='stamp' title='experiment timestamped' />
+                    {% endif %}
 
-                {# show attached if there is a file attached #}
-                {% if item.has_attachment %}
-                    <img src='app/img/attached.png' alt='file attached' />
-                {% endif %}
+                    {# show attached if there is a file attached #}
+                    {% if item.has_attachment %}
+                        <img src='app/img/attached.png' alt='file attached' />
+                    {% endif %}
 
-                {% if Entity.type == 'items' %}
-                    {{ item.rating|stars|raw }}
-                {% endif %}
+                    {% if Entity.type == 'items' %}
+                        {{ item.rating|stars|raw }}
+                    {% endif %}
 
-                {% if item.tags is not null %}
-                <span class='tags'><img src='app/img/tags.png' alt='tags' />
-                    {% set tagsArr = item.tags|split('|') %}
-                    {% for tag in tagsArr %}
-                    <a href='{{ Entity.page }}.php?mode=show&tag={{ tag|url_encode }}'>{{ tag|raw }}</a>
-                    {% endfor %}
-                {% endif %}
+                    {% if item.tags is not null %}
+                    <span class='tags'><img src='app/img/tags.png' alt='tags' />
+                        {% set tagsArr = item.tags|split('|') %}
+                        {% for tag in tagsArr %}
+                        <a href='{{ Entity.page }}.php?mode=show&tag={{ tag|url_encode }}'>{{ tag|raw }}</a>
+                        {% endfor %}
+                    {% endif %}
                 </p>
                 <div class='bodyToggle' id='bodyToggle_{{ item.id }}' style='overflow:auto;margin: 10px 0 0 20px'></div>
             </section>
