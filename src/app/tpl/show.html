@@ -8,35 +8,35 @@
     <div class='col-md-2'>
         <div class='dropdown'>
             <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>{{ 'Create new'|trans }} <span class='caret'></span></button>
-        <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
-            {% if Entity.type == 'experiments' %}
-                <li class='dropdown-item'><a href='app/controllers/ExperimentsController.php?create=true'>
-                    {% trans %}
-                    Experiment
-                    {% plural 1 %}
-                    Experiments
-                    {% endtrans %}
-                    </a>
-                <li role='separator' class='divider'></li>
-                {% if templatesArr|length > 0 %}
-                    {% for tpl in templatesArr %}
+            <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+                {% if Entity.type == 'experiments' %}
+                    <li class='dropdown-item'><a href='app/controllers/ExperimentsController.php?create=true'>
+                        {% trans %}
+                        Experiment
+                        {% plural 1 %}
+                        Experiments
+                        {% endtrans %}
+                        </a>
+                    <li role='separator' class='divider'></li>
+                    {% if templatesArr|length > 0 %}
+                        {% for tpl in templatesArr %}
+                            <li class='dropdown-item'>
+                                <a href='app/controllers/ExperimentsController.php?create=true&tpl={{ tpl.id }}'>{{ tpl.name }}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class='dropdown-item disabled'><a href='#'>{{ 'No templates found'|trans }}</a></li>
+                    {% endif %}
+                    <li role='separator' class='divider'></li>
+                    <li class='dropdown-item'><a href='ucp.php?tab=3'>{{ 'Manage templates'|trans }}</a></li>
+                {% else %}
+                    {% for category in categoryArr %}
                         <li class='dropdown-item'>
-                            <a href='app/controllers/ExperimentsController.php?create=true&tpl={{ tpl.id }}'>{{ tpl.name }}</a>
+                            <a style='color:#{{ category.color }}' href='app/controllers/DatabaseController.php?create={{ category.category_id }}'>{{ category.category }}</a>
                         </li>
                     {% endfor %}
-                {% else %}
-                    <li class='dropdown-item disabled'><a href='#'>{{ 'No templates found'|trans }}</a></li>
                 {% endif %}
-                <li role='separator' class='divider'></li>
-                <li class='dropdown-item'><a href='ucp.php?tab=3'>{{ 'Manage templates'|trans }}</a></li>
-            {% else %}
-                {% for category in categoryArr %}
-                    <li class='dropdown-item'>
-                        <a style='color:#{{ category.color }}' href='app/controllers/DatabaseController.php?create={{ category.category_id }}'>{{ category.category }}</a>
-                    </li>
-                {% endfor %}
-            {% endif %}
-        </ul>
+            </ul>
         </div>
     </div>
     <!-- RIGHT MENU -->
