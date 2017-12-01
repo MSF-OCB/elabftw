@@ -1,4 +1,5 @@
 <?php
+/* @DEACTIVATED
 namespace Elabftw\Elabftw;
 
 use PDO;
@@ -38,3 +39,4 @@ class CommentsTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(is_array($this->Entity->Comments->readAll()));
     }
 }
+*/

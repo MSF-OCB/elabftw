@@ -21,7 +21,7 @@ class Experiments extends AbstractEntity
     use EntityTrait;
 
     /** @var Comments $Comments instance of Comments */
-    public $Comments;
+    # @DEACTIVATED public $Comments;
 
     /** @var Links $Links instance of Links */
     public $Links;
@@ -45,7 +45,7 @@ class Experiments extends AbstractEntity
     {
         parent::__construct($users, $id);
 
-        $this->Comments = new Comments($this);
+        # @DEACTIVATED $this->Comments = new Comments($this);
         $this->Links = new Links($this);
         $this->Steps = new Steps($this);
     }
@@ -314,7 +314,7 @@ class Experiments extends AbstractEntity
         $req->execute();
 
 
-        $this->Comments->destroyAll();
+        # @DEACTIVATED $this->Comments->destroyAll();
         $this->Links->destroyAll();
         $this->Steps->destroyAll();
         $this->Tags->destroyAll();

@@ -35,7 +35,7 @@ try {
         $linksArr = $Entity->Links->readAll();
 
         // COMMENTS
-        $commentsArr = $Entity->Comments->readAll();
+        # @DEACTIVATED $commentsArr = $Entity->Comments->readAll();
 
         // UPLOADS
         $UploadsView = new UploadsView($Entity->Uploads);
@@ -47,7 +47,7 @@ try {
             'Entity' => $Entity,
             'Uv' => $UploadsView,
             'linksArr' => $linksArr,
-            'commentsArr' => $commentsArr,
+            # @DEACTIVATED 'commentsArr' => $commentsArr,
             'cleanTitle' => Tools::getCleanTitle($Entity->entityData['title']),
             'mode' => 'view'
         );
@@ -138,8 +138,8 @@ try {
             $Entity->order = 'status.ordering';
         } elseif ($order === 'date' || $order === 'rating' || $order === 'title') {
             $Entity->order = 'experiments.' . $order;
-        } elseif ($order === 'comment') {
-            $Entity->order = 'experiments_comments.recent_comment';
+        # @DEACTIVATED } elseif ($order === 'comment') {
+        # @DEACTIVATED     $Entity->order = 'experiments_comments.recent_comment';
         }
 
         // SORT

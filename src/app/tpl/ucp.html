@@ -45,7 +45,7 @@
                     <option value='cat' {{ Users.userData.orderby == 'cat' ? ' selected' }}>{{ 'Category'|trans }}</option>
                     <option value='date' {{ Users.userData.orderby == 'date' ? ' selected' }}>{{ 'Date'|trans }}</option>
                     <option value='title' {{ Users.userData.orderby == 'title' ? ' selected' }}>{{ 'Title'|trans }}</option>
-                    <option value='comment' {{ Users.userData.orderby == 'comment' ? ' selected' }}>{{ 'Comment'|trans }}</option>
+                    {# @DEACTIVATED <option value='comment' {{ Users.userData.orderby == 'comment' ? ' selected' }}>{{ 'Comment'|trans }}</option> #}
                 </select>
             </p>
             <p>

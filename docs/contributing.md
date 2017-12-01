@@ -83,10 +83,12 @@ docker-compose up
 **Enable debug mode.**  
 This will disable the caching of Twig templates.
 
-- Container shell: `docker exec -it surveyo-mysql bash`
-- MySQL shell: `mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE`
-- Run SQL: `UPDATE config SET conf_value = '1' WHERE conf_name = 'debug';`
-- Exit MySQL shell: `exit;` (or `ctrl + d`)
+Execute these commands one of the other:
+
+- Launch container shell: `docker exec -it surveyo-mysql bash`
+- Launch MySQL shell: `mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE`
+- Execute SQL command: `UPDATE config SET conf_value = '1' WHERE conf_name = 'debug';`
+- Exit MySQL shell: `exit` (or `ctrl + d`)
 - Exit container shell: `exit` (or `ctrl + d`)
 
 
@@ -98,6 +100,8 @@ cd $CODE_DIR
 ```
 
 The app will be accessible at https://localhost/ when the servers are ready (after 30-60s).
+
+When you're done working, you can stop the servers with `./elabctl stop`.
 
 
 ## Common commands
@@ -115,3 +119,7 @@ The app will be accessible at https://localhost/ when the servers are ready (aft
     - Run the unitand acceptance  tests: `grunt test`
 - **Documentation:**
     - Generate a PHP Docblock documentation: `grunt api`
+
+**Note:**
+- `elabctl` commands must be executed from `<CODE_DIR>`.
+- `grunt` commands must be executed from `<CODE_DIR>/src`.

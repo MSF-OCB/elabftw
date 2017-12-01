@@ -130,6 +130,7 @@ class Auth
 
         $this->Request->getSession()->set('is_admin', $group['is_admin']);
         $this->Request->getSession()->set('is_sysadmin', $group['is_sysadmin']);
+        $this->Request->getSession()->set('is_visitor', $group['is_visitor']);
         // create a token
         $this->token = md5(uniqid(rand(), true));
 
@@ -249,6 +250,7 @@ class Auth
 
         // if we are already logged in with the session, skip everything
         if ($this->Request->getSession()->has('auth')) {
+            $this->checkVisitors();  // Don't logout but redirect if not allowed.
             return true;
         }
 
@@ -260,5 +262,54 @@ class Auth
         }
 
         return false;
+    }
+
+    /**
+     * Redirect visitors to the home page if they don't have access to the current page or to the current page with
+     * the default action if they may not perform the requested action.
+     */
+    public function checkVisitors()
+    {
+        $session = $this->Request->getSession();
+        if (!$session->has('auth') || $session->get('is_visitor') != 1) {
+            return;
+        }
+
+        $scriptName = basename($this->Request->getScriptName());
+
+        // don't allow access to these pages
+        $forbiddenPagesArr = array(
+            'ucp.php',
+            'EntityController.php',
+        );
+        if (in_array($scriptName, $forbiddenPagesArr)) {
+            $this->_redirect();
+        }
+
+        switch ($scriptName) {
+            // only allow show and edit
+            case 'experiments.php':
+            case 'database.php':
+                $action = $this->Request->query->get('mode', 'show');
+                $allowedActionsArr = array('show', 'view');
+                if (!in_array($action, $allowedActionsArr)) {
+                    $this->_redirect($this->Request->getScriptName());
+                }
+                break;
+
+            // allow all actions but only on one item
+            case 'make.php':
+                if (strpos($this->Request->query->get('id'), " ") !== false) {
+                    $this->_redirect();
+                }
+                break;
+        }
+    }
+
+    protected function _redirect($path='/')
+    {
+        $url = $this->Request->getScheme() . '://' . $this->Request->getHttpHost() . $path;
+        header('Location: ' . $url);
+        exit;
     }
 }

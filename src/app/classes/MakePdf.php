@@ -173,6 +173,8 @@ class MakePdf extends AbstractMake
      */
     private function addComments()
     {
+        return ''; # @DEACTIVATED
+
         $html = '';
         // will return false if empty
         $commentsArr = $this->Entity->Comments->readAll();

@@ -83,7 +83,9 @@
     {% if App.Session.has('auth') %}
     <div class="user-nav">
         {{ 'Howdy,'|trans }}<a class="elab-tooltip" href='profile.php'><span>{{ 'My Profile'|trans }}</span> {{ App.Users.userData.firstname|raw }}</a><br>
-        <a class="elab-tooltip" href='ucp.php'><span>{{ 'Settings'|trans }}</span><img src='app/img/settings.png' alt='{{ 'Settings'|trans }}' /></a> |
+        {% if App.Session.get('is_visitor') != 1 %}
+            <a class="elab-tooltip" href='ucp.php'><span>{{ 'Settings'|trans }}</span><img src='app/img/settings.png' alt='{{ 'Settings'|trans }}' /></a> |
+        {% endif %}
         <a class="elab-tooltip" href='#'><strong class="elab-tooltip" id='help'><span>{{ 'Help'|trans }}</span>?</strong></a> |
         <a class="elab-tooltip" href='app/logout.php'><span>{{ 'Logout'|trans }}</span><img src='app/img/logout.png' alt='{{ 'Logout'|trans }}' /></a>
     </div>
