@@ -69,7 +69,7 @@
     {% if Entity.type == 'database' %}
         <option value='rating' {{ Request.query.get('order') == 'rating' ? 'selected' }}>{{ 'Rating'|trans }}</option>
     {% else %}
-        <option value='comment' {{ Request.query.get('order') == 'comment' ? 'selected' }}>{{ 'Comment'|trans }}</option>
+        {# @DEACTIVATED <option value='comment' {{ Request.query.get('order') == 'comment' ? 'selected' }}>{{ 'Comment'|trans }}</option> #}
     {% endif %}
     <option value='title' {{ Request.query.get('order') == 'title' ? 'selected' }}>{{ 'Title'|trans }}</option>
 </select>

@@ -138,8 +138,8 @@ try {
             $Entity->order = 'status.ordering';
         } elseif ($order === 'date' || $order === 'rating' || $order === 'title') {
             $Entity->order = 'experiments.' . $order;
-        } elseif ($order === 'comment') {
-            $Entity->order = 'experiments_comments.recent_comment';
+        # @DEACTIVATED } elseif ($order === 'comment') {
+        # @DEACTIVATED     $Entity->order = 'experiments_comments.recent_comment';
         }
 
         // SORT
@@ -178,6 +178,7 @@ try {
             }
 
             $itemsArr = $Entity->read();
+            print_r($itemsArr); die();
         }
 
         $template = 'show.html';

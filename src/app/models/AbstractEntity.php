@@ -181,9 +181,9 @@ abstract class AbstractEntity
         if ($this instanceof Experiments) {
             $select = "SELECT DISTINCT " . $this->type . ".*,
                 status.color, status.name AS category, status.id AS category_id,
-                uploads.up_item_id, uploads.has_attachment,
-                experiments_comments.recent_comment,
-                SUBSTRING_INDEX(GROUP_CONCAT(stepst.next_step SEPARATOR '|'), '|', 1) AS next_step,
+                uploads.up_item_id, uploads.has_attachment, "
+                # @DEACTIVATED . "experiments_comments.recent_comment, "
+                . "SUBSTRING_INDEX(GROUP_CONCAT(stepst.next_step SEPARATOR '|'), '|', 1) AS next_step,
                 CONCAT(users.firstname, ' ', users.lastname) AS fullname";
                 # @TODO $select .= ", teams.team_name";
 
@@ -217,7 +217,7 @@ abstract class AbstractEntity
                 $tagsJoin . ' ' .
                 $statusJoin . ' ' .
                 $uploadsJoin . ' ' .
-                $commentsJoin . ' ' .
+                # @DEACTIVATED $commentsJoin . ' ' .
                 $where;
 
         } elseif ($this instanceof Database) {
