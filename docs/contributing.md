@@ -115,3 +115,7 @@ The app will be accessible at https://localhost/ when the servers are ready (aft
     - Run the unitand acceptance  tests: `grunt test`
 - **Documentation:**
     - Generate a PHP Docblock documentation: `grunt api`
+
+**Note:**
+- `elabctl` commands must be executed from `<CODE_DIR>`.
+- `grunt` commands must be executed from `<CODE_DIR>/src`.
