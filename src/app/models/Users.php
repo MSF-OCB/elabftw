@@ -326,7 +326,8 @@ class Users
             teams.team_name AS teamname
             FROM users
             LEFT JOIN teams ON (users.team = teams.team_id)
-            WHERE " . $valSql . " users.team = :team";
+            LEFT JOIN groups ON (users.usergroup = groups.group_id)
+            WHERE " . $valSql . " users.team = :team AND groups.is_visitor = 0";
         $req = $this->Db->prepare($sql);
         if (is_int($validated)) {
             $req->bindValue(':validated', $validated);

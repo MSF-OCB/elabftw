@@ -17,10 +17,22 @@
         <span class='align_right'>{{ Entity.entityData.rating|stars|raw }}</span>
 {% endif %}
 
+<!-- TITLE : click on it to go to edit mode only if we are not in read only mode -->
+<div class='title_view{% if not Entity.isReadOnly and not Entity.entityData.locked and App.Session.get('is_visitor') != 1 %} click2Edit clickable{% endif %}'>
+    {% if Entity.type == 'items' %}
+        <span style='color:#{{ Entity.entityData.color }}'>{{ Entity.entityData.category }}</span>
+    {% endif %}
+    {{ Entity.entityData.title|raw }}
+</div>
+
 <!-- DATE -->
 <div>
     <img src='app/img/calendar.png' title='date' alt='Date :' />{{ Entity.entityData.date|kdate }}
+    <span class='author'><img class='image' alt='Author' src='app/img/user.png' />{{ Entity.entityData.fullname }}</span>
+    {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ Entity.entityData.team_name }}</span> #}
+    {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ Entity.entityData.group }}</span> #}
 </div>
+
 <!-- begin action buttons row -->
 {% if not Entity.isReadOnly and not Entity.entityData.locked and App.Session.get('is_visitor') != 1 %}
     <a class='elab-tooltip' href='?mode=edit&id={{ Entity.id }}'>
@@ -90,14 +102,6 @@
         <a href='?mode=show&tag={{ tag|url_encode }}'>{{ tag|raw }}</a>
     {% endfor %}
 {% endif %}
-
-<!-- TITLE : click on it to go to edit mode only if we are not in read only mode -->
-<div class='title_view{% if not Entity.isReadOnly and not Entity.entityData.locked and App.Session.get('is_visitor') != 1 %} click2Edit clickable{% endif %}'>
-    {% if Entity.type == 'items' %}
-        <span style='color:#{{ Entity.entityData.color }}'>{{ Entity.entityData.category }}</span>
-    {% endif %}
-    {{ Entity.entityData.title|raw }}
-</div>
 
 <!-- SHOW NEXT STEP -->
 {% set next_step = Entity.entityData.next_step %}
