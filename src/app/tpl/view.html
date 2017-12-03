@@ -28,7 +28,7 @@
 <!-- DATE -->
 <div>
     <img src='app/img/calendar.png' title='date' alt='Date :' />{{ Entity.entityData.date|kdate }}
-    <span class='author'><img class='image' alt='Author' src='app/img/user.png' />{{ Entity.entityData.fullname }}</span>
+    <span class='author' style='font-size:80%;'><img class='image' alt='Author' src='app/img/user.png' width="12px"/><i>{{ Entity.entityData.fullname }}</i></span>
     {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ Entity.entityData.team_name }}</span> #}
     {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ Entity.entityData.group }}</span> #}
 </div>
@@ -99,7 +99,7 @@
     {% set tagsValueArr = Entity.entityData.tags|split('|') %}
     {% for key, tag in tagsValueArr %}
         {# the key allows to get the id stored in tagsIdArr #}
-        <a href='?mode=show&tag={{ tag|url_encode }}'>{{ tag|raw }}</a>
+        <a href='?mode=show&tag={{ tag|url_encode }}'>&nbsp;&nbsp;{{ tag|raw }}&nbsp;&nbsp;</a>&nbsp;
     {% endfor %}
 {% endif %}
 

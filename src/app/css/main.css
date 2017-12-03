@@ -924,7 +924,9 @@ input[type='checkbox']{
 }
 .tags a {
     text-decoration: none;
-    color:#EE0000;
+    color:#556166;
+    background-color:#eaeaea;
+    font-size: 90%;
 }
 .tags a:hover {
     color: #343434;

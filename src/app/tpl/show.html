@@ -160,7 +160,9 @@
                 {% endif %}
 
                 <a href='{{ Entity.page }}.php?mode=view&id={{ item.id }}'>{{ item.title|raw }}</a>
+                <span class='author' style='font-size:50%;'><!--<img class='image' alt='Author' src='app/img/user.png' width='12pix' valign='top'/>--><i>by {{ item.fullname }}</i></span>
                 </p>
+
                 {% if item.next_step|length > 0 %}
                     {% set stepsArr = item.next_step|split('|') %}
                     {% set next = stepsArr|first %}
@@ -182,7 +184,6 @@
                     <span style='text-transform:uppercase;font-size:80%;color:#{{ item.color }}'>{{ item.category }}</span>
                     <span class='date'><img class='image' alt='Date' src='app/img/calendar.png' />{{ item.date|kdate }}</span>
 
-                    <span class='author'><img class='image' alt='Author' src='app/img/user.png' />{{ item.fullname }}</span>
                     {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ item.team_name }}</span> #}
                     {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ item.group }}</span> #}
 
@@ -203,7 +204,7 @@
                     <span class='tags'><img src='app/img/tags.png' alt='tags' />
                         {% set tagsArr = item.tags|split('|') %}
                         {% for tag in tagsArr %}
-                        <a href='{{ Entity.page }}.php?mode=show&tag={{ tag|url_encode }}'>{{ tag|raw }}</a>
+                        <a href='{{ Entity.page }}.php?mode=show&tag={{ tag|url_encode }}'>&nbsp;&nbsp;{{ tag|raw }}&nbsp;&nbsp;</a>&nbsp;
                         {% endfor %}
                     {% endif %}
                 </p>
