@@ -145,7 +145,7 @@
             {# dim the experiment a bit if it's not yours #}
             {% set opacity = '1' %}
             {% if (Entity.Users.userid != item.userid) and Entity.type == 'experiments' %}
-                {% set opacity = '0.7' %}
+                {% set opacity = '0.9' %}
             {% endif %}
             {% if Entity.Users.userData.single_column_layout %}
                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
