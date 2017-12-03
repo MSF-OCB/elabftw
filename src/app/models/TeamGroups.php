@@ -87,11 +87,11 @@ class TeamGroups implements CrudInterface
     }
 
     /**
-     * When we need to build a select menu with visibility + team groups
-     *
-     * @return array
-     */
-    public function getVisibilityList()
+    *When we need to see the team groups the user is in
+    *
+    *@return array
+    */
+    public function getTeamGroupsList()
     {
         $idArr = array();
         $nameArr = array();
@@ -109,13 +109,23 @@ class TeamGroups implements CrudInterface
         }
         $tgArr = array_combine($idArr, $nameArr);
 
+        return $tgArr;
+    }
+
+    /**
+     * When we need to build a select menu with visibility + team groups
+     *
+     * @return array
+     */
+    public function getVisibilityList()
+    {
         $visibilityArr = array(
             'organization' => 'Everyone with an account',
             'team' => 'Only the team',
             'user' => 'Only me'
         );
 
-        return $visibilityArr + $tgArr;
+        return $visibilityArr + $this->getTeamGroupsList();
     }
 
 

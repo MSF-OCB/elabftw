@@ -28,12 +28,15 @@ try {
 
     $UserStats = new UserStats($Users, $count);
     $TagCloud = new TagCloud($Users->userid);
+    // TEAM GROUPS
+    $TeamGroups = new TeamGroups($Users);
 
     $template = 'profile.html';
     $renderArr = array(
         'UserStats' => $UserStats,
         'TagCloud' => $TagCloud,
-        'count' => $count
+        'count' => $count,
+        'TeamGroups' => $TeamGroups,
     );
 
 } catch (Exception $e) {
