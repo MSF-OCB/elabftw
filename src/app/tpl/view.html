@@ -144,6 +144,15 @@
 
 </section>
 
+{% if Entity.type == 'items' %}
+  <div class='submitButtonDiv'>
+    <a class='button' href='experiments.php?mode=show&related={{ Entity.id }}'>
+        <span>{{ 'Show related'|trans }}</span>
+        <!--<img src='app/img/link.png' alt='Related' />-->
+    </a>
+  </div><br>
+{% endif %}
+
 {{ include('uploads.html') }}
 
 {# @DEACTIVATED
