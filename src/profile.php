@@ -28,7 +28,6 @@ try {
     $Entity = new Experiments($ProfileUsers);
     $Entity->setUseridFilter();
     $itemsArr = $Entity->read();
-    $count = count($itemsArr);
 
     $UserStats = new UserStats($ProfileUsers, $count);
     $TagCloud = new TagCloud($ProfileUsers->userid);
@@ -40,8 +39,8 @@ try {
         'ProfileUsers' => $ProfileUsers,
         'UserStats' => $UserStats,
         'TagCloud' => $TagCloud,
-        'count' => $count,
         'TeamGroups' => $TeamGroups,
+        'experimentsArr' => $itemsArr,
     );
 
 } catch (Exception $e) {

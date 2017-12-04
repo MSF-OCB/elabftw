@@ -48,6 +48,30 @@
     </div>
 </section>
 
+<!-- EXPERIMENTS -->
+{% if experimentsArr|length %}
+    <section class='box'>
+        <h4>{% trans %}Experiments{% endtrans %}</h4>
+        <hr>
+        <table id='teamtable' class='table'>
+            <tr>
+                <th>{{ 'Title'|trans }}</th>
+                <th>{{ 'Author'|trans }}</th>
+                <th>{{ 'Date'|trans }}</th>
+                <th>{{ 'Group'|trans }}</th>
+            </tr>
+            {% for item in experimentsArr %}
+                <tr>
+                    <td><a href='experiments.php?mode=view&id={{ item.id }}'>{{ item.title|raw }}</a></td>
+                    <td><a href='profile.php?id={{ item.userid }}'>{{ item.fullname }}</a></td>
+                    <td>{{ item.date|kdate }}</td>
+                    <td>{{ item.team_group_name }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endif %}
+
 {% if App.Session.get('is_visitor') != 1 %}
     <!-- STATUS STAT -->
     <section class='box'>
