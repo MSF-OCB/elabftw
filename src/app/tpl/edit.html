@@ -37,17 +37,16 @@
 
         <!-- DATE -->
             <div class='row'>
-                <div class='col-md-4'>
+                <div class='col-md-12'>
                     <img src='app/img/calendar.png' title='date' alt='calendar' />
                     <label for='datepicker'>{{ 'Date'|trans }}</label>
                     <!-- if firefox has support for it: type = date -->
                     <!-- https://bugzilla.mozilla.org/show_bug.cgi?id=825294 -->
                     <input name='date' id='datepicker' size='8' type='text' value='{{ Entity.entityData.date }}' />
-                </div>
 
             {% if Entity.type == 'experiments' %}
                 <!-- VISIBILITY -->
-                <div class='col-md-4'>
+                <span style="margin-left:15px">
                     <img src='app/img/eye.png' alt='visibility' />
                     <label for='visibility_select'>{{ 'Visibility'|trans }}</label>
                     <select id='visibility_select'>
@@ -57,11 +56,24 @@
                             >{{ value|trans }}</option>
                         {% endfor %}
                     </select>
-                </div>
+                </span>
+
+                <!-- TEAM GROUP -->
+                <span style="margin-left:15px">
+                    <img src='app/img/team.png' alt='Group' />
+                    <label for='team_group_select'>{{ 'Group'|trans }}</label>
+                    <select id='team_group_select'>
+                        {% for team_group in TeamGroups.readAll %}
+                            <option value='{{ team_group.id }}'
+                            {{ Entity.entityData.team_group == team_group.id ? ' selected' }}
+                            >{{ team_group.name }}</option>
+                        {% endfor %}
+                    </select>
+                </span>
             {% endif %}
 
                 <!-- CATEGORIES (status for exp and itemstypes for items) -->
-                <div class='col-md-4'>
+                <span style="margin-left:15px">
                     <img src='app/img/status.png' alt='category' />
                     <label for='category_select'>
                     {% if Entity.type == 'experiments' %}
@@ -76,16 +88,16 @@
                             {{ Entity.entityData.category_id == category.category_id ? ' selected' }}>{{ category.category }}</option>
                         {% endfor %}
                     </select>
-                </div>
+                </span>
                 {% if Entity.type == 'items' %}
                     <!-- STAR RATING -->
-                    <div class='col-md-4' style='margin-top:15px'>
+                    <span style='margin-left:15px;margin-top:15px'>
                         {% for i in range(1, 5) %}
                         <input data-rating='{{ i }}' name='star' type='radio' class='star' value='{{ i }}' {{ Entity.entityData.rating == i ? ' checked=checked' }} />
                         {% endfor %}
-                    </div>
+                    </span>
                 {% endif %}
-
+                </div>
             </div>
             <!-- TITLE -->
             <h4>{{ 'Title'|trans }}</h4>

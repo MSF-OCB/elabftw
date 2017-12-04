@@ -59,6 +59,7 @@ DROP TABLE IF EXISTS `experiments`;
 CREATE TABLE `experiments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `team` int(10) unsigned NOT NULL,
+  `team_group` int(10) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `date` int(10) unsigned NOT NULL,
   `body` mediumtext,

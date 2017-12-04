@@ -184,12 +184,14 @@ abstract class AbstractEntity
                 uploads.up_item_id, uploads.has_attachment, "
                 # @DEACTIVATED . "experiments_comments.recent_comment, "
                 . "SUBSTRING_INDEX(GROUP_CONCAT(stepst.next_step SEPARATOR '|'), '|', 1) AS next_step,
-                CONCAT(users.firstname, ' ', users.lastname) AS fullname";
+                CONCAT(users.firstname, ' ', users.lastname) AS fullname,
+                team_groups.name AS team_group_name";
                 # @TODO $select .= ", teams.team_name";
 
             $from = "FROM experiments";
 
             $usersJoin = "LEFT JOIN users ON (experiments.userid = users.userid)";
+            $teamGroupsJoin = "LEFT JOIN team_groups ON (experiments.team_group = team_groups.id)";
             # @TODO $teamsJoin = "LEFT JOIN teams ON (users.team = teams.team_id)";
             $stepsJoin = "LEFT JOIN (
                 SELECT experiments_steps.item_id AS steps_item_id,
@@ -212,6 +214,7 @@ abstract class AbstractEntity
                 $tagsSelect . ' ' .
                 $from . ' ' .
                 $usersJoin . ' ' .
+                $teamGroupsJoin . ' ' .
                 # @TODO $teamsJoin . ' ' .
                 $stepsJoin . ' ' .
                 $tagsJoin . ' ' .

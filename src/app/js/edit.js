@@ -243,6 +243,22 @@ $(document).ready(function() {
         });
     });
 
+    // TEAM GROUP SELECT
+    $(document).on('change', '#team_group_select', function() {
+        var team_group = $(this).val();
+        $.post("app/controllers/ExperimentsController.php", {
+            updateTeamGroup: true,
+            id: id,
+            team_group: team_group
+        }).done(function(data) {
+            if (data.res) {
+                notif(data.msg, 'ok');
+            } else {
+                notif(data.msg, 'ko');
+            }
+        });
+    });
+
     // STATUS SELECT
     $(document).on('change', '#category_select', function() {
         var categoryId = $(this).val();
