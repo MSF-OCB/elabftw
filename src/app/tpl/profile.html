@@ -62,12 +62,15 @@
                 <th>{{ 'Group'|trans }}</th>
             </tr>
             {% for item in experimentsArr %}
-                <tr>
-                    <td><a href='experiments.php?mode=view&id={{ item.id }}'>{{ item.title|raw }}</a></td>
-                    <td><a href='profile.php?id={{ item.userid }}'>{{ item.fullname }}</a></td>
-                    <td>{{ item.date|kdate }}</td>
-                    <td>{{ item.team_group_name }}</td>
-                </tr>
+                {% set permissions = Entity.getPermissions(item) %}
+                {% if permissions.read %}
+                    <tr>
+                        <td><a href='experiments.php?mode=view&id={{ item.id }}'>{{ item.title|raw }}</a></td>
+                        <td><a href='profile.php?id={{ item.userid }}'>{{ item.fullname }}</a></td>
+                        <td>{{ item.date|kdate }}</td>
+                        <td>{{ item.team_group_name }}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </table>
     </section>
