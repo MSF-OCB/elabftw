@@ -43,6 +43,7 @@ try {
         'TeamGroups' => $TeamGroups,
         'Entity' => $Entity,
         'experimentsArr' => $itemsArr,
+        'experimentsCount' => $count,
     );
 
 } catch (Exception $e) {
