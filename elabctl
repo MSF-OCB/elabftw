@@ -146,7 +146,10 @@ function getDeps()
 
     if ! hash gettext 2>/dev/null; then
         echo "Installing prerequisite package: gettext. Please wait…"
-        install-pkg git
+        install-pkg gettext
+        if [ "$OS" == "macos" ]; then
+            brew link --force gettext
+        fi
     fi
 }
 
