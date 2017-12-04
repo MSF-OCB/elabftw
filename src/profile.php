@@ -40,6 +40,7 @@ try {
         'UserStats' => $UserStats,
         'TagCloud' => $TagCloud,
         'TeamGroups' => $TeamGroups,
+        'Entity' => $Entity,
         'experimentsArr' => $itemsArr,
     );
 
