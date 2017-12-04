@@ -686,6 +686,16 @@ tr:nth-child(odd) {
     color:#EE0000;
 }
 
+.author a {
+  color:#5d5d5d;
+  text-decoration: none;
+}
+.author a:hover {
+  color:#ee0000;
+  text-decoration: underline;
+}
+
+
 .box {
     border: 1px solid #dcdddc;
     margin-top: 10px;
