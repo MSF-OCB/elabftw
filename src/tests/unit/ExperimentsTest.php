@@ -71,6 +71,14 @@ class ExperimentsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->Experiments->updateVisibility(1));
     }
 
+    public function testUpdateTeamGroup()
+    {
+        $this->Experiments->setId(1);
+        $this->Experiments->canOrExplode('write');
+        $this->assertTrue($this->Experiments->updateTeamGroup(1));
+        $this->assertTrue($this->Experiments->updateTeamGroup(2));
+    }
+
     public function testUpdateCategory()
     {
         $this->Experiments->setId(1);

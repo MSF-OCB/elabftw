@@ -16,38 +16,61 @@
                 <th>{{ 'Skype'|trans }}</th>
             </tr>
             <tr>
-                <td><a href='profile.php?userid={{ App.Users.userData.userid }}'>{{ App.Users.userData.fullname|raw }}</span></a></td>
-                <td><a href='mailto:{{ App.Users.userData.email }}'>{{ App.Users.userData.email }}</a></td>
-                <td>{{ App.Users.userData.phone }}</td>
-                <td>{{ App.Users.userData.cellphone }}</td>
-                <td><a href='{{ App.Users.userData.website }}'>{{ App.Users.userData.website }}</a></td>
-                <td>{{ App.Users.userData.skype }}</td>
+                <td><a href='profile.php?id={{ ProfileUsers.userData.userid }}'>{{ ProfileUsers.userData.fullname|raw }}</span></a></td>
+                <td><a href='mailto:{{ ProfileUsers.userData.email }}'>{{ ProfileUsers.userData.email }}</a></td>
+                <td>{{ ProfileUsers.userData.phone }}</td>
+                <td>{{ ProfileUsers.userData.cellphone }}</td>
+                <td><a href='{{ ProfileUsers.userData.website }}'>{{ ProfileUsers.userData.website }}</a></td>
+                <td>{{ ProfileUsers.userData.skype }}</td>
             </tr>
         </table>
-<p>{% trans %}Is participating to:&nbsp;{% endtrans %}
-{% for key, value in TeamGroups.getTeamGroupsList %}
-{{ value|trans }} /
-{% endfor %}
-<br>
-
-</p>
+        {% if TeamGroups.getTeamGroupsList|length %}
+            <p>
+                {% trans %}Is participating to:{% endtrans %}
+                {% for value in TeamGroups.getTeamGroupsList %}
+                    {{ value|trans }}{% if loop.last %}.{% else %},{% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
         {% if App.Session.get('is_visitor') != 1 %}
-    <p>{{ count }} {% trans %}
-        experiments done since
-        {% endtrans %} {{ App.Users.userData.register_date|date("l jS \\of F Y") }}</p>
+            <p>{{ count }} {% trans %}experiments done since{% endtrans %} {{ ProfileUsers.userData.register_date|date("l jS \\of F Y") }}</p>
             <p><a href='ucp.php'>{% trans %}Go to user control panel{% endtrans %}</a>
             <!--@TODO : set an option in admin panel to display or not API Key-->
             {% if false %}
-            <div id='api_div'><h4>{% trans %}API key{% endtrans %}</h4>
-                {% if App.Users.userData.api_key|length > 0 %}
-                <input value='{{ App.Users.userData.api_key }}'></input>
-                {% endif %}
-                <button class='button generateApiKey'>{% trans %}Generate an API Key{% endtrans %}</button></p>
-            </div>
+                <div id='api_div'><h4>{% trans %}API key{% endtrans %}</h4>
+                    {% if ProfileUsers.userData.api_key|length > 0 %}
+                    <input value='{{ ProfileUsers.userData.api_key }}'></input>
+                    {% endif %}
+                    <button class='button generateApiKey'>{% trans %}Generate an API Key{% endtrans %}</button></p>
+                </div>
             {% endif %}
         {% endif %}
     </div>
 </section>
+
+<!-- EXPERIMENTS -->
+{% if experimentsArr|length %}
+    <section class='box'>
+        <h4>{% trans %}Experiments{% endtrans %}</h4>
+        <hr>
+        <table id='teamtable' class='table'>
+            <tr>
+                <th>{{ 'Title'|trans }}</th>
+                <th>{{ 'Author'|trans }}</th>
+                <th>{{ 'Date'|trans }}</th>
+                <th>{{ 'Group'|trans }}</th>
+            </tr>
+            {% for item in experimentsArr %}
+                <tr>
+                    <td><a href='experiments.php?mode=view&id={{ item.id }}'>{{ item.title|raw }}</a></td>
+                    <td><a href='profile.php?id={{ item.userid }}'>{{ item.fullname }}</a></td>
+                    <td>{{ item.date|kdate }}</td>
+                    <td>{{ item.team_group_name }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endif %}
 
 {% if App.Session.get('is_visitor') != 1 %}
     <!-- STATUS STAT -->

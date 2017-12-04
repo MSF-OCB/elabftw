@@ -184,7 +184,7 @@
                     <span class='date' style='font-size:80%;'><img class='image' alt='Date' src='app/img/calendar.png' />{{ item.date|kdate }}</span>
                     <span class='author' style='font-size:80%;'><!--<img class='image' alt='Author' src='app/img/user.png' width='12pix' valign='top'/>--><i>by {{ item.fullname }}</i></span>
                     {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ item.team_name }}</span> #}
-                    {# @TODO <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ item.group }}</span> #}
+                    <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ item.team_group_name }}</span>
 
                     {% if item.timestamped %}
                         <img src='app/img/stamp.png' alt='stamp' title='experiment timestamped' />

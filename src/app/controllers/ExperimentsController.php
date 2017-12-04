@@ -59,6 +59,24 @@ try {
         }
     }
 
+    // UPDATE TEAM GROUP
+    if ($Request->request->has('updateTeamGroup')) {
+        $Response = new JsonResponse();
+        $Entity->canOrExplode('write');
+
+        if ($Entity->updateTeamGroup($Request->request->get('team_group'))) {
+            $Response->setData(array(
+                'res' => true,
+                'msg' => _('Saved')
+            ));
+        } else {
+            $Response->setData(array(
+                'res' => false,
+                'msg' => Tools::error()
+            ));
+        }
+    }
+
     // CREATE STEP
     if ($Request->request->has('createStep')) {
         $Response = new JsonResponse();

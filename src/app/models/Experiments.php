@@ -64,10 +64,12 @@ class Experiments extends AbstractEntity
         if ($tpl !== null) {
             $Templates->setId($tpl);
             $templatesArr = $Templates->read();
+            $team_group = $templatesArr['team_group'];
             $title = $templatesArr['name'];
             $body = $templatesArr['body'];
         } else {
             $title = _('Untitled');
+            $team_group = 0;
             $body = $Templates->readCommonBody();
         }
 
@@ -77,11 +79,12 @@ class Experiments extends AbstractEntity
         }
 
         // SQL for create experiments
-        $sql = "INSERT INTO experiments(team, title, date, body, status, elabid, visibility, userid)
-            VALUES(:team, :title, :date, :body, :status, :elabid, :visibility, :userid)";
+        $sql = "INSERT INTO experiments(team, team_group, title, date, body, status, elabid, visibility, userid)
+            VALUES(:team, :team_group, :title, :date, :body, :status, :elabid, :visibility, :userid)";
         $req = $this->Db->prepare($sql);
         $req->execute(array(
             'team' => $this->Users->userData['team'],
+            'team_group' => $team_group,
             'title' => $title,
             'date' => Tools::kdate(),
             'body' => $body,
@@ -160,6 +163,22 @@ class Experiments extends AbstractEntity
         $sql = "UPDATE experiments SET visibility = :visibility WHERE id = :id";
         $req = $this->Db->prepare($sql);
         $req->bindParam(':visibility', $visibility);
+        $req->bindParam(':id', $this->id, PDO::PARAM_INT);
+
+        return $req->execute();
+    }
+
+    /**
+     * Update the team group for an experiment
+     *
+     * @param int $teamGroup
+     * @return bool
+     */
+    public function updateTeamGroup($teamGroup)
+    {
+        $sql = "UPDATE experiments SET team_group = :team_group WHERE id = :id";
+        $req = $this->Db->prepare($sql);
+        $req->bindParam(':team_group', $teamGroup);
         $req->bindParam(':id', $this->id, PDO::PARAM_INT);
 
         return $req->execute();
@@ -279,11 +298,12 @@ class Experiments extends AbstractEntity
         // capital i looks good enough
         $title = $experiment['title'] . ' I';
 
-        $sql = "INSERT INTO experiments(team, title, date, body, status, elabid, visibility, userid)
-            VALUES(:team, :title, :date, :body, :status, :elabid, :visibility, :userid)";
+        $sql = "INSERT INTO experiments(team, team_group, title, date, body, status, elabid, visibility, userid)
+            VALUES(:team, :team_group, :title, :date, :body, :status, :elabid, :visibility, :userid)";
         $req = $this->Db->prepare($sql);
         $req->execute(array(
             'team' => $this->Users->userData['team'],
+            'team_group' => $experiment['team_group'],
             'title' => $title,
             'date' => Tools::kdate(),
             'body' => $experiment['body'],

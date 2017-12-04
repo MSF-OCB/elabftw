@@ -465,6 +465,11 @@ CREATE TABLE `team_groups` (
   `team` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `team_groups` (`id`, `name`, `team`) VALUES
+(1, 'Team Group 1', 1);
+INSERT INTO `team_groups` (`id`, `name`, `team`) VALUES
+(2, 'Team Group 2', 1);
+
 -- --------------------------------------------------------
 
 --

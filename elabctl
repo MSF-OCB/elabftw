@@ -111,16 +111,12 @@ function getUserconf()
 
 function getDeps()
 {
-    if [ "$OS" != "macos" ]; then
-        is-root
-    fi
-
     if [ "$OS" == "ubuntu" ] || [ "$OS" == "debian" ] || [ "$OS" == "linuxmint" ]; then
         echo "Synchronizing packages index. Please wait…"
         apt-get update >> $LOG_FILE 2>&1
     elif [ "$OS" == "macos" ] && ! hash brew 2>/dev/null; then
-        # See https://brew.sh/
         echo "Installing prerequisite package: brew. Please wait…"
+        # See https://brew.sh/
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 
@@ -146,7 +142,10 @@ function getDeps()
 
     if ! hash gettext 2>/dev/null; then
         echo "Installing prerequisite package: gettext. Please wait…"
-        install-pkg git
+        install-pkg gettext
+        if [ "$OS" == "macos" ]; then
+            brew link --force gettext
+        fi
     fi
 }
 
@@ -608,6 +607,9 @@ function version()
 # SCRIPT BEGIN
 
 detectOS
+if [ "$OS" != "macos" ]; then
+    is-root
+fi
 
 # only one argument allowed
 if [ $# != 1 ]; then
