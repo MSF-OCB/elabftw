@@ -25,8 +25,8 @@ try {
     $ProfileUsers = new Users($userId, $Auth, $Config);
 
     // get total number of experiments
-    $Entity = new Experiments($ProfileUsers);
-    $Entity->setUseridFilter();
+    $Entity = new Experiments($Users);
+    $Entity->setUseridFilter($ProfileUsers->userid);
     $itemsArr = $Entity->read();
     $count = count($itemsArr);
 

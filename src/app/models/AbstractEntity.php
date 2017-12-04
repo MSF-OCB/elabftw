@@ -345,9 +345,10 @@ abstract class AbstractEntity
      *
      * @return null
      */
-    public function setUseridFilter()
+    public function setUseridFilter($userId = null)
     {
-        $this->useridFilter = ' AND ' . $this->type . '.userid = ' . $this->Users->userid;
+        $userId = $userId === null ? $this->Users->userid : $userId;
+        $this->useridFilter = ' AND ' . $this->type . '.userid = ' . $userId;
     }
 
     /**
