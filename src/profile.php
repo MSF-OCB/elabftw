@@ -20,19 +20,24 @@ require_once 'app/init.inc.php';
 $App->pageTitle = _('Profile');
 
 try {
+    $userId = $Request->query->get('id');
+    if (!$userId) { $userId = $Users->userid; }
+    $ProfileUsers = new Users($userId, $Auth, $Config);
+
     // get total number of experiments
-    $Entity = new Experiments($Users);
+    $Entity = new Experiments($ProfileUsers);
     $Entity->setUseridFilter();
     $itemsArr = $Entity->read();
     $count = count($itemsArr);
 
-    $UserStats = new UserStats($Users, $count);
-    $TagCloud = new TagCloud($Users->userid);
+    $UserStats = new UserStats($ProfileUsers, $count);
+    $TagCloud = new TagCloud($ProfileUsers->userid);
     // TEAM GROUPS
-    $TeamGroups = new TeamGroups($Users);
+    $TeamGroups = new TeamGroups($ProfileUsers);
 
     $template = 'profile.html';
     $renderArr = array(
+        'ProfileUsers' => $ProfileUsers,
         'UserStats' => $UserStats,
         'TagCloud' => $TagCloud,
         'count' => $count,
