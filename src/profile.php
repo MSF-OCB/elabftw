@@ -27,6 +27,7 @@ try {
     // get total number of experiments
     $Entity = new Experiments($ProfileUsers);
     $Entity->setUseridFilter();
+    $Entity->canOrExplode('read');
     $itemsArr = $Entity->read();
 
     $UserStats = new UserStats($ProfileUsers, $count);
