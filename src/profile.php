@@ -28,6 +28,7 @@ try {
     $Entity = new Experiments($ProfileUsers);
     $Entity->setUseridFilter();
     $itemsArr = $Entity->read();
+    $count = count($itemsArr);
 
     $UserStats = new UserStats($ProfileUsers, $count);
     $TagCloud = new TagCloud($ProfileUsers->userid);
