@@ -66,9 +66,8 @@ class MakePdf extends AbstractMake
         // set meta data
         $mpdf->SetAuthor($this->Entity->entityData['fullname']);
         $mpdf->SetTitle($this->Entity->entityData['title']);
-        $mpdf->SetSubject('eLabFTW pdf');
+        // $mpdf->SetSubject('Surveyo');
         $mpdf->SetKeywords(strtr($this->Entity->entityData['tags'], '|', ' '));
-        $mpdf->SetCreator('www.elabftw.net');
         $mpdf->WriteHTML($this->getContent());
         $mpdf->PDFA = true;
 
@@ -107,7 +106,7 @@ class MakePdf extends AbstractMake
     private function addElabid()
     {
         if ($this->Entity instanceof Experiments) {
-            return "<p class='elabid'>elabid : " . $this->Entity->entityData['elabid'] . "</p>";
+            return "<p class='elabid'>Surveyo ID : " . $this->Entity->entityData['elabid'] . "</p>";
         }
         return "";
     }
@@ -336,7 +335,6 @@ class MakePdf extends AbstractMake
 </htmlpageheader>
 <htmlpagefooter name="footer">
     <div id="footer">
-        PDF generated with <a href="https://www.elabftw.net">elabftw</a>, a free and open source lab notebook
         <p style="font-size:6pt;">File generated on {DATE d-m-Y} at {DATE H:m}</p>
     </div>
 </htmlpagefooter>
