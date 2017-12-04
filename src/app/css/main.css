@@ -50,7 +50,7 @@ body:before {
 
 /* this is the big white thing that holds everything */
 #container {
-    background: #fff;
+    background: #f8f8f8;
     padding:0;
     font: 100% 'Lato', Verdana, Arial, Helvetica, sans-serif;
     font-weight: 500;
@@ -121,7 +121,7 @@ select{
 
 .form-control:focus, #dropdownMenu1:focus {
     border-color:#EE0000;
-    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(41,174,185,.6);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(238,0,0,.6);
 }
 
 /* GENERAL */
@@ -438,6 +438,7 @@ a.elab-tooltip-top span:after {
 /* fix tooltip larger than parent div */
 section.item {
     overflow:visible;
+    background-color: #fff;
 }
 
 /* BADGE */
@@ -902,7 +903,7 @@ input[type='checkbox']{
 }
 
 .title a {
-    color: #888;
+    color: #556166;
 }
 
 .title a:hover {
