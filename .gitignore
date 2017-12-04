@@ -2,3 +2,4 @@ var/
 
 docker-compose.yml
 elabctl.conf
+.DS_Store
