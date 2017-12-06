@@ -155,7 +155,7 @@ try {
             $sort = $Request->query->get('sort');
         }
 
-        if ($sort === 'asc' || $sort === 'desc') {
+        if (in_array(strtolower($sort), array('asc', 'desc'))) {
             $Entity->sort = $sort;
         }
 
@@ -181,7 +181,6 @@ try {
         }
 
         $template = 'show.html';
-
         $renderArr = array(
             'Entity' => $Entity,
             'itemsArr' => $itemsArr,
@@ -189,7 +188,9 @@ try {
             'categoryArr' => $categoryArr,
             'templatesArr' => $templatesArr,
             'tag' => $tag,
-            'query' => $query
+            'query' => $query,
+            'order' => $order,
+            'sort' => $sort,
         );
     }
 } catch (InvalidArgumentException $e) {

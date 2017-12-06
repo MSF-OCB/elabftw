@@ -55,7 +55,7 @@
 <select name='cat' style='-moz-appearance:none' class='form-control select-filter-status'>
     <option value=''>{{ Entity.type == 'experiments' ? 'Filter status'|trans : 'Filter by type'|trans }}</option>
     {% for category in categoryArr %}
-        <option value='{{ category.category_id }}' {{ Request.query.get('cat') == category.category_id ? 'selected' }}>
+        <option value='{{ category.category_id }}' {{ App.Request.query.get('cat') == category.category_id ? 'selected' }}>
         {{ category.category }}</option>
     {% endfor %}
 
@@ -66,21 +66,21 @@
 <!-- ORDER -->
 <select name='order' style='-moz-appearance:none' class='form-control select-order'>
     <option value=''>{{ 'Order by'|trans }}</option>
-    <option value='cat' {{ Request.query.get('order') == 'cat' ? 'selected' }}>{{ 'Category'|trans }}</option>
-    <option value='date' {{ Request.query.get('order') == 'date' ? 'selected' }}>{{ 'Date'|trans }}</option>
+    <option value='cat' {{ order == 'cat' ? 'selected' }}>{{ 'Category'|trans }}</option>
+  <option value='date' {{ order == 'date' ? 'selected' }}>{{ 'Date'|trans }}</option>
     {% if Entity.type == 'database' %}
-        <option value='rating' {{ Request.query.get('order') == 'rating' ? 'selected' }}>{{ 'Rating'|trans }}</option>
+        <option value='rating' {{ order == 'rating' ? 'selected' }}>{{ 'Rating'|trans }}</option>
     {% else %}
-        {# @DEACTIVATED <option value='comment' {{ Request.query.get('order') == 'comment' ? 'selected' }}>{{ 'Comment'|trans }}</option> #}
+        {# @DEACTIVATED <option value='comment' {{ order == 'comment' ? 'selected' }}>{{ 'Comment'|trans }}</option> #}
     {% endif %}
-    <option value='title' {{ Request.query.get('order') == 'title' ? 'selected' }}>{{ 'Title'|trans }}</option>
+    <option value='title' {{ order == 'title' ? 'selected' }}>{{ 'Title'|trans }}</option>
 </select>
 
 <!-- SORT -->
 <select name='sort' style='-moz-appearance:none' class='form-control select-sort'>
     <option value=''>{{ 'Sort'|trans }}</option>
-    <option value='desc' {{ Request.query.get('sort') == 'desc' ? 'selected' }}>{{ 'DESC'|trans }}</option>
-    <option value='asc' {{ Request.query.get('sort') == 'asc' ? 'selected' }}>{{ 'ASC'|trans }}</option>
+    <option value='desc' {{ sort == 'desc' ? 'selected' }}>{{ 'DESC'|trans }}</option>
+    <option value='asc' {{ sort == 'asc' ? 'selected' }}>{{ 'ASC'|trans }}</option>
 </select>
 <button class='btn btn-elab submit-order'>{{ 'Order'|trans }}</button>
 <button type='reset' class='btn btn-danger submit-reset'>
@@ -139,6 +139,7 @@
         </p>
     {% endif %}
     <div class='row display-flex'>
+      {% set previous_group = 'n' %}
     {% for item in itemsArr %}
         {% set permissions = Entity.getPermissions(item) %}
         {% if permissions.read %}
@@ -148,6 +149,10 @@
                 {% set opacity = '0.9' %}
             {% endif %}
             {% if Entity.Users.userData.single_column_layout %}
+              {% if previous_group != item.team_group_name %}
+                <h2>{{ item.team_group_name }}</h2>
+                {% set previous_group = item.team_group_name %}
+              {% endif %}
                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
             {% else %}
                 <div class='col-xs-12 col-sm-6 col-md-6 col-lg-4'>
@@ -175,7 +180,7 @@
                         {{ item.fullname|raw }}
                     {% endif %}
                     {% if App.Session.get('is_visitor') != 1 %}
-                        <input type='checkbox' data-id='{{ item.id }}' data-type='{{ Entity.type }}' style='width:15px;vertical-align:-3px;' />
+                        <input type='checkbox' data-id='{{ item.id }}' data-type='{{ Entity.type }}' style='width:15px;vertical-align:-1px;' />
                         {% if not item.locked and (item.userid == App.Users.userid or Entity.type == 'items') %}
                             <a href='{{ Entity.page }}.php?mode=edit&id={{ item.id }}'><img src='app/img/pen-blue.png' alt='edit' /></a>
                         {% endif %}
