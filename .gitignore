@@ -1,5 +1,5 @@
 var/
 
 docker-compose.yml
-elabctl.conf
+surveyo.conf
 .DS_Store

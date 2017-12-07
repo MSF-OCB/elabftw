@@ -8,7 +8,7 @@ See official documentation for more information: https://doc.elabftw.net/contrib
 **Create the project folder.**
 
 ```
-CODE_DIR="${HOME}/path/to/surveyo"
+CODE_DIR="${HOME}/surveyo"
 [ -d $CODE_DIR ] || mkdir -p $CODE_DIR
 ```
 
