@@ -27,11 +27,11 @@ mkdir -p $CODE_DIR
 
 
 > **If PHP 7.1 is not available**, install the following apt repository [ppa:ondrej/php](https://launchpad.net/~ondrej/+archive/ubuntu/php):
->
->```
+
+```
 [[ -n `apt-cache search php7.1` ]] || sudo add-apt-repository ppa:ondrej/php
 ```
->
+
 > _Remark: If there's a "WARNING: add-apt-repository is broken with non-UTF-8 locales", you can ignore it and continue by pressing ENTER._
 
 
@@ -153,12 +153,20 @@ yarn install
 
 ## Install Docker containers
 
-> **Remark:** On Linux, the `docker*` commands must be executed as root/with `sudo`.
+> **Remark:** On Linux, the `docker*` and `./surveyo` commands must be executed as root/with `sudo`.
 
 ```
 cd $CODE_DIR
 docker-compose up
 ```
+
+Hit `Ctrl-C` when the containers are built then start the services:
+
+```
+cd $CODE_DIR
+./surveyo start
+```
+
 
 ## Enable debug mode
 
@@ -175,13 +183,6 @@ Execute these commands one of the other:
 - Exit container shell: `exit` (or `ctrl + d`)
 
 
-## Start the servers
+## More commands
 
-> **Remark:** On Linux, the `./surveyo` commands must be executed as root/with `sudo`.
-
-```
-cd $CODE_DIR
-./surveyo start
-```
-
-> See `./surveyo help` and the file `commands.md` in this folder for more commands.
+See `./surveyo help` and the file `commands.md` in this folder for more commands.
