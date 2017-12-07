@@ -6,7 +6,7 @@ CODE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ###############################################################
 # CONFIGURATION
 # Via a config file…
-declare -r USER_CONF_FILE="${CODE_DIR}/elabctl.conf"
+declare -r USER_CONF_FILE="${CODE_DIR}/surveyo.conf"
 
 # … of these defaults
 # where do you want your backups to end up?
