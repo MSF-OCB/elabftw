@@ -146,10 +146,15 @@ function update() {
 function git-deploy {
     cd $CODE_DIR
     git pull
+
+    cd $CODE_DIR/src
     composer install
     yarn install
+
     echo
     echo "WARNING: Don't forget to execute DB migration files if needed."
+
+    cd $CODE_DIR
 }
 
 # # install pip and docker-compose, get elabftw.yml and configure it with sed
