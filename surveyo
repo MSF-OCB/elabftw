@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Based on elabctl v0.6.2 © 2017 Nicolas CARPi - https://www.elabftw.net
 
-CODE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+declare -r THIS_FILE=${BASH_SOURCE[0]}
+declare -r COMMAND=$1
+declare CODE_DIR="$(cd "$(dirname "${THIS_FILE}")" && pwd)"
 
 ###############################################################
 # CONFIGURATION
@@ -99,8 +101,10 @@ function info() {
     echo "Backup directory: ${BACKUP_DIR}"
     echo "Data directory: ${DATA_DIR}"
     echo "Log file: ${LOG_FILE}"
-    echo ""
-    status
+    if is-root && is-docker-ready; then
+        echo
+        status
+    fi
 }
 
 function php-logs() {
@@ -510,14 +514,6 @@ function getDistrib() {
     fi
 }
 
-# Check whether the `docker-compose.yml` file exists.
-function is-docker-ready() {
-    if [ ! -f $DOCKER_CONF_FILE ]; then
-        echo "ERROR: `docker-compose.yml` file not found at $DOCKER_CONF_FILE"
-        exit 1
-    fi
-}
-
 # Usage: `if in-list needle haystack; then`
 function in-list() {
     [[ $2 =~ (^|[[:space:]])$1($|[[:space:]]) ]] && return 0 || return 1
@@ -527,12 +523,13 @@ function install-pkg() {
     $PACMAN "$1" >> $LOG_FILE 2>&1
 }
 
+# Check whether the `docker-compose.yml` file exists.
+function is-docker-ready() {
+    [ -f $DOCKER_CONF_FILE ] && return 0 || return 1
+}
+
 function is-root() {
-    if [ $EUID != 0 ]; then
-        echo "You don't have sufficient permissions. Try with:"
-        echo "sudo $0 $1"
-        exit 1
-    fi
+    [ $EUID != 0 ] && return 0 || return 1
 }
 
 
@@ -548,14 +545,21 @@ fi
 
 # check commands requiring root (not needed on macOS)
 if [ "$OS" != "macos" ]; then
-    if in-list $1 "backup php-logs web-logs mysql-logs start status stop restart update"; then
-        is-root
+    if in-list $COMMAND "backup php-logs web-logs mysql-logs start status stop restart update"; then
+        if ! is-root; then
+            echo "You don't have sufficient permissions. Try with:"
+            echo "sudo $THIS_FILE $COMMAND"
+            exit 1
+        fi
     fi
 fi
 
 # check commands requiring docker
-if in-list $1 "php-logs web-logs mysql-logs start status stop restart update"; then
-    is-docker-ready
+if in-list $COMMAND "php-logs web-logs mysql-logs start status stop restart update"; then
+    if ! is-docker-ready; then
+        echo "ERROR: `docker-compose.yml` file not found at $DOCKER_CONF_FILE"
+        exit 1
+    fi
 fi
 
 # available commands
@@ -565,11 +569,11 @@ for valid in backup compile-messages git-deploy help info php-logs web-logs mysq
     commands[$valid]=1
 done
 
-if [[ ${commands[$1]} ]]; then
+if [[ ${commands[$COMMAND]} ]]; then
     set -u  # Treat unset variables and parameters as an error when performing parameter expansion.
-    $1
+    $COMMAND
 else
-    echo "ERROR: Unknown command '$1'."
+    echo "ERROR: Unknown command '$COMMAND'."
     help
     exit 1
 fi
