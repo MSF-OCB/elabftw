@@ -40,6 +40,7 @@ function help() {
 
         backup            Backup your installation
         compile-messages  Compile translation files
+        git-deploy        Deploy from the git repo
         help              Show this text
         info              Display the configuration variables and status
         php-logs          Show last 20 lines of nginx error log
@@ -550,7 +551,7 @@ fi
 # available commands
 declare -A commands
 # @TODO: install uninstall
-for valid in backup compile-messages help info logs php-logs start status stop restart update; do
+for valid in backup compile-messages git-deploy help info logs php-logs start status stop restart update; do
     commands[$valid]=1
 done
 
