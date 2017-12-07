@@ -1,6 +1,6 @@
-# @TODO:: Replace all `<CODE_DIR>` with the path to the source code.
-# @TODO:: For development environment, check also the "@TODO: DEV". For other environments, remove these lines.
-# @TODO:: Clean up this file by removing all the @TODO: comments.
+# @TODO: Replace all `<CODE_DIR>` with the path to the source code.
+# @TODO: For development environment, check also the "@TODO: DEV". For other environments, remove these lines.
+# @TODO: Clean up this file by removing all the @TODO: comments.
 # docker-compose configuration file
 # use : "docker-compose up -d" to start containers
 # eLabFTW Docker Image: https://hub.docker.com/r/elabftw/elabimg/
@@ -63,9 +63,9 @@ web:
         # required if ENABLE_LETSENCRYPT is set to true
         # host:container
         - <CODE_DIR>/var/ssl:/ssl  # @TODO DEV: Comment this out.
-
     links:
         - mysql
+
 mysql:
     image: mysql:5.7
     restart: always
@@ -83,7 +83,6 @@ mysql:
         - MYSQL_DATABASE=surveyo
         - MYSQL_USER=surveyo
         - MYSQL_PASSWORD=  # @TODO: Define this. Must be the same as `surveyo-web.DB_PASSWORD`.
-
     volumes:
         # this is where you will keep the database persistently
         # host:container
