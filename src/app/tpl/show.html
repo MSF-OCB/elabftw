@@ -149,10 +149,16 @@
                 {% set opacity = '0.9' %}
             {% endif %}
             {% if Entity.Users.userData.single_column_layout %}
-              {% if previous_group != item.team_group_name %}
-                <h2>{{ item.team_group_name }}</h2>
-                {% set previous_group = item.team_group_name %}
+              {% if Entity.type == 'items' %}
+                {% set cattitle = item.category %}
+              {%else%}
+                {% set cattitle = item.team_group_name %}
               {% endif %}
+              {% if (previous_group != cattitle) %}
+                <h2>{{ cattitle }}</h2>
+                {% set previous_group = cattitle %}
+              {% endif %}
+
                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
             {% else %}
                 <div class='col-xs-12 col-sm-6 col-md-6 col-lg-4'>

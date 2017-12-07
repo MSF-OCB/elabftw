@@ -74,7 +74,7 @@ try {
 
         // CATEGORY FILTER
         if (Tools::checkId($Request->query->get('cat'))) {
-            $Entity->categoryFilter = "AND items_types.id = " . $Request->query->get('cat');
+            $Entity->categoryFilter = "AND items.type = " . $Request->query->get('cat');
             $searchType = 'category';
         }
         // TAG FILTER
@@ -107,7 +107,7 @@ try {
         }
 
         if ($order === 'cat') {
-            $Entity->order = 'items_types.ordering';
+            $Entity->order = 'items.type';
         } elseif ($order === 'date' || $order === 'rating' || $order === 'title') {
             $Entity->order = 'items.' . $order;
         }
@@ -149,7 +149,12 @@ try {
             'Request' => $Request,
             'categoryArr' => $categoryArr,
             'itemsArr' => $itemsArr,
-            'searchType' => $searchType
+            'searchType' => $searchType,
+            'tag' => $tag,
+            'query' => $query,
+            'order' => $order,
+            'sort' => $sort,
+
         );
     }
 } catch (Exception $e) {

@@ -135,7 +135,7 @@ try {
         }
 
         if ($order === 'cat') {
-            $Entity->order = 'status.ordering';
+            $Entity->order = 'experiments.team_group';//'status.ordering';
         } elseif ($order === 'date' || $order === 'rating' || $order === 'title') {
             $Entity->order = 'experiments.' . $order;
         # @DEACTIVATED } elseif ($order === 'comment') {
