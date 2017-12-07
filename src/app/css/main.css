@@ -924,7 +924,7 @@ input[type='checkbox']{
 .title a:hover {
     color:#EE0000 !important;
     transition-duration: 500ms;
-    text-decoration:underline;
+    text-decoration:none;
 }
 
 .title_view {
