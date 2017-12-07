@@ -85,7 +85,7 @@ function backup() {
 }
 
 function compile-messages() {
-    for po_file in `find $CODE_DIR/src/app/locale/ -name "messages.po"`; do
+    for po_file in `find $CODE_DIR/src/app/locale -name "messages.po"`; do
         echo "Compiling ${po_file}"
         mo_file=${po_file/%.po/.mo}
         msgfmt -o $mo_file $po_file
