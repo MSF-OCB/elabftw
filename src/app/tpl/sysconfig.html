@@ -1,28 +1,29 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<!-- Get the updates.ini file to check for updates -->
+<p><i>System Admin: You should check for updates from the base we used for surveyo> "elabftw", from time to time.</i></p> 
+<!-- Get the updates.ini file to check for updates --
 {% if not ReleaseCheck.getUpdatesIni %}
     {{ 'Error getting latest version information from server! Check the proxy setting.'|trans|msg('ko') }}
 {% endif %}
 
-<!-- display current and latest version -->
+<!-- display current and latest version --
 {% if ReleaseCheck.success and ReleaseCheck.updateIsAvailable %}
     {% set style = 'color:red' %}
 {% endif %}
 <p>{{ 'Installed version:'|trans }} <span style='{{ style }}'>{{ constant('INSTALLED_VERSION', ReleaseCheck) }}</span>
 {% if ReleaseCheck.success %}
-    <!-- show a little green check if we have latest version -->
+    <!-- show a little green check if we have latest version --
     {% if not ReleaseCheck.updateIsAvailable %}
         <img src='app/img/check.png' width='16px' length='16px' title='latest' style='position:relative;bottom:5px;' alt='OK' />
     {% endif %}
 {% endif %}
 <br>
 {% if ReleaseCheck.success %}
-    <!-- display latest version -->
+    <!-- display latest version --
     {{ 'Latest version:'|trans }} {{ ReleaseCheck.getLatestVersion }}</p>
 
-    <!-- if we don't have the latest version, show button redirecting to doc -->
+    <!-- if we don't have the latest version, show button redirecting to doc --
     {% if ReleaseCheck.updateIsAvailable %}
         {{ '%s - A new version is available! %sUpdate elabftw%sRead changelog%s'|trans|format(
             ReleaseCheck.getReleaseDate,
@@ -30,7 +31,7 @@
             "</button></a><a href='" ~ ReleaseCheck.getChangelogLink ~ "'><button class='button'>",
             "</button></a>")|msg('warning') }}
     {% endif %}
-
+-->
     {% if App.Config.configArr.mail_from == 'notconfigured@example.com' %}
         {{ 'Please finalize install: %slink to documentation%s.'|trans|format("<a href='https://doc.elabftw.net/postinstall.html#setting-up-email'>", "</a>")|msg('ko') }}
     {% endif %}
