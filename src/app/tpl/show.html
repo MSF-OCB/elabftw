@@ -109,14 +109,14 @@
         {% plural count %}
             results found
         {% endtrans %}
-        {% if App.Session.get('is_visitor') != 1 %}
+        {% if (App.Session.get('is_admin') == 1) %}
             <a href='#' id='selectAllBoxes'>{{ 'Select all'|trans }}</a>
             <span id='advancedSelectOptions'> - <a href='#' id='unselectAllBoxes'>{{ 'Clear selection'|trans }}</a> -
                 <a href='#' id='invertSelection'>{{ 'Invert selection'|trans }}</a></span>
         {% endif %}
     </p>
 
-    {% if App.Session.get('is_visitor') != 1 %}
+    {% if (App.Session.get('is_admin') == 1) %}
         <p id='withSelected'>{{ 'With selected:'|trans }}
             {% if not searchPage %}
                 <select id='catChecked'>
@@ -185,8 +185,10 @@
                     {% if searchPage %}
                         {{ item.fullname|raw }}
                     {% endif %}
+                    {% if (App.Session.get('is_admin') == 1) %}
+                      <input type='checkbox' data-id='{{ item.id }}' data-type='{{ Entity.type }}' style='width:15px;vertical-align:-1px;' />
+                    {% endif %}
                     {% if App.Session.get('is_visitor') != 1 %}
-                        <input type='checkbox' data-id='{{ item.id }}' data-type='{{ Entity.type }}' style='width:15px;vertical-align:-1px;' />
                         {% if not item.locked and (item.userid == App.Users.userid or Entity.type == 'items') %}
                             <a href='{{ Entity.page }}.php?mode=edit&id={{ item.id }}'><img src='app/img/pen-blue.png' alt='edit' /></a>
                         {% endif %}
