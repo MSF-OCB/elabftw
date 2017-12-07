@@ -108,12 +108,10 @@ function php-logs() {
 }
 
 function web-logs() {
-    is-docker-ready
     docker logs $DOCKER_SERVICE_WEB
 }
 
 function mysql-logs() {
-    is-docker-ready
     docker logs $DOCKER_SERVICE_MYSQL
 }
 
@@ -123,7 +121,6 @@ function restart() {
 }
 
 function start() {
-    is-docker-ready
     docker-compose -f "$DOCKER_CONF_FILE" up -d
 }
 
@@ -133,12 +130,10 @@ function status() {
 }
 
 function stop() {
-    is-docker-ready
     docker-compose -f "$DOCKER_CONF_FILE" down
 }
 
 function update() {
-    is-docker-ready
     backup
     docker-compose -f "$DOCKER_CONF_FILE" pull
     restart
@@ -153,7 +148,8 @@ function git-deploy {
     git pull
     composer install
     yarn install
-    echo "Don't forget to execute DB migration files if needed."
+    echo
+    echo "WARNING: Don't forget to execute DB migration files if needed."
 }
 
 # # install pip and docker-compose, get elabftw.yml and configure it with sed
@@ -538,9 +534,6 @@ function is-root() {
 # SCRIPT BEGIN
 
 detectOS
-if [ "$OS" != "macos" ]; then
-    is-root
-fi
 
 # only one argument allowed
 if [ $# != 1 ]; then
@@ -548,10 +541,22 @@ if [ $# != 1 ]; then
     exit 1
 fi
 
+# check commands requiring root (not needed on macOS)
+if [ "$OS" != "macos" ]; then
+    if in-list $1 "backup php-logs web-logs mysql-logs start status stop restart update"; then
+        is-root
+    fi
+fi
+
+# check commands requiring docker
+if in-list $1 "php-logs web-logs mysql-logs start status stop restart update"; then
+    is-docker-ready
+fi
+
 # available commands
 declare -A commands
 # @TODO: install uninstall
-for valid in backup compile-messages git-deploy help info logs php-logs start status stop restart update; do
+for valid in backup compile-messages git-deploy help info php-logs web-logs mysql-logs start status stop restart update; do
     commands[$valid]=1
 done
 
