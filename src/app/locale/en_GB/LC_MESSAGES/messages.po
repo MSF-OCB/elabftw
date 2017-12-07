@@ -27,8 +27,8 @@ msgstr ""
 #: app/views/TeamsView.php:48 experiments.php:22
 msgid "Experiment"
 msgid_plural "Experiments"
-msgstr[0] "Survey"
-msgstr[1] "Surveys"
+msgstr[0] "Form"
+msgstr[1] "Forms"
 
 #: /tmp/elabftw-twig-cache/2e/2eb5296122d989a7c3634277a68a2c4cbbf9052700d7916bc0845cbd20c54720.php:97
 #: /tmp/elabftw-twig-cache/8e/8e35fcd38bec9be37f937124d6bc993db0092d42190b2ec94e1bbcffbe657e91.php:44
@@ -39,7 +39,7 @@ msgstr "Knowledge base"
 #: /tmp/elabftw-twig-cache/2e/2eb5296122d989a7c3634277a68a2c4cbbf9052700d7916bc0845cbd20c54720.php:198
 #, php-format
 msgid "You can have experiments templates (%sControl Panel%s)."
-msgstr "You can have surveys templates (%sControl Panel%s)."
+msgstr "You can have forms templates (%sControl Panel%s)."
 
 #: /tmp/elabftw-twig-cache/2e/2eb5296122d989a7c3634277a68a2c4cbbf9052700d7916bc0845cbd20c54720.php:204
 msgid ""
@@ -47,18 +47,18 @@ msgid ""
 "spawn with a list of Experiments/Items."
 msgstr ""
 "You can make links inside the text by typing # and an autocomplete menu will "
-"spawn with a list of Surveys/Items."
+"spawn with a list of Forms/Items."
 
 #: /tmp/elabftw-twig-cache/2e/2eb5296122d989a7c3634277a68a2c4cbbf9052700d7916bc0845cbd20c54720.php:228
 msgid "You can duplicate experiments in one click."
-msgstr "You can duplicate surveys in one click."
+msgstr "You can duplicate forms in one click."
 
 #: /tmp/elabftw-twig-cache/2e/2eb5296122d989a7c3634277a68a2c4cbbf9052700d7916bc0845cbd20c54720.php:240
 msgid ""
 "Once timestamped an experiment cannot be unlocked or modified. Only comments "
 "can be added."
 msgstr ""
-"Once timestamped a survey cannot be unlocked or modified. Only comments "
+"Once timestamped a form cannot be unlocked or modified. Only comments "
 "can be added."
 
 
@@ -105,7 +105,7 @@ msgstr "You belong to the %s team. %s"
 
 #: /tmp/elabftw-twig-cache/ce/ce8c9a6a8952ab17e73a19a0d1923579eaf7fb5a100e8866cc349ee5b1cbc664.php:51
 msgid "experiments done since"
-msgstr "surveys done since"
+msgstr "forms done since"
 
 #: /tmp/elabftw-twig-cache/eb/eb3c31811cce475571de10467982e45df78ca2cfeb1558db6dbf14c4fefe2583.php:60
 msgid "------ Select a team ------"
@@ -113,18 +113,18 @@ msgstr "------ Select a team ------"
 
 #: /tmp/elabftw-twig-cache/da/da2f49cdd1c5854a7de63e3e37e57303e51d2fb2312be2e110802d6e1559f0f4.php:202
 msgid "Timestamp Experiment"
-msgstr "Timestamp Survey"
+msgstr "Timestamp Form"
 
 #: /tmp/elabftw-twig-cache/da/da2f49cdd1c5854a7de63e3e37e57303e51d2fb2312be2e110802d6e1559f0f4.php:210
 msgid "Timestamp this experiment?"
-msgstr "Timestamp this survey?"
+msgstr "Timestamp this form?"
 
 #: /tmp/elabftw-twig-cache/da/da2f49cdd1c5854a7de63e3e37e57303e51d2fb2312be2e110802d6e1559f0f4.php:216
 msgid ""
 "Once timestamped an experiment cannot be edited anymore! Are you sure you "
 "want to do this?"
 msgstr ""
-"Once timestamped a survey cannot be edited anymore! Are you sure you "
+"Once timestamped a form cannot be edited anymore! Are you sure you "
 "want to do this?"
 
 
@@ -134,7 +134,7 @@ msgstr "Unique surveyoID:"
 
 #: /tmp/elabftw-twig-cache/c1/c127a9fef5016167f452c7da5f923edcee55b50cd25e82a044f6a44ccf16fddb.php:311
 msgid "Experiments steps"
-msgstr "Surveys steps"
+msgstr "Forms steps"
 
 #: /tmp/elabftw-twig-cache/c1/c127a9fef5016167f452c7da5f923edcee55b50cd25e82a044f6a44ccf16fddb.php:421
 msgid "from the database"
@@ -146,15 +146,15 @@ msgstr "Types of items"
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:112
 msgid "Experiments template"
-msgstr "Surveys template"
+msgstr "Forms template"
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:139
 msgid "Users can delete experiments:"
-msgstr "Users can delete surveys:"
+msgstr "Users can delete forms:"
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:157
 msgid "An admin account will always be able to delete experiments."
-msgstr "An admin account will always be able to delete surveys."
+msgstr "An admin account will always be able to delete forms."
 
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:216
@@ -176,16 +176,16 @@ msgid ""
 "Type EMAIL ADDRESS of a member to delete this user and all their experiments/"
 "files forever:"
 msgstr ""
-"Type EMAIL ADDRESS of a member to delete this user and all their surveys/"
+"Type EMAIL ADDRESS of a member to delete this user and all their forms/"
 "files forever:"
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:800
 msgid "Common Experiment Template"
-msgstr "Common Survey Template"
+msgstr "Common Form Template"
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:804
 msgid "This is the default text when someone creates an experiment."
-msgstr "This is the default text when someone creates a survey."
+msgstr "This is the default text when someone creates a form."
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:898
 msgid "This page will allow you to import a .elabftw.zip archive."
@@ -193,15 +193,15 @@ msgstr "This page will allow you to import a .surveyo.zip archive."
 
 #: /tmp/elabftw-twig-cache/df/dfa23f7a483d5898025ad984ce590aa552b89fbece6bdea450e574e2102fcc58.php:264
 msgid "Show experiments from the team on the Experiments page?"
-msgstr "Show surveys from the team on the Surveys page?"
+msgstr "Show forms from the team on the Forms page?"
 
 #: /tmp/elabftw-twig-cache/df/dfa23f7a483d5898025ad984ce590aa552b89fbece6bdea450e574e2102fcc58.php:315
 msgid "Default visibility for new experiments"
-msgstr "Default visibility for new surveys"
+msgstr "Default visibility for new forms"
 
 #: /tmp/elabftw-twig-cache/df/dfa23f7a483d5898025ad984ce590aa552b89fbece6bdea450e574e2102fcc58.php:532
 msgid "Experiments Templates"
-msgstr "Surveys Templates"
+msgstr "Forms Templates"
 
 #: /tmp/elabftw-twig-cache/df/dfa23f7a483d5898025ad984ce590aa552b89fbece6bdea450e574e2102fcc58.php:569
 msgid "Name of the Template"
@@ -217,15 +217,15 @@ msgstr "Welcome to surveyo. Use the 'Create new' button to get started!"
 
 #: app/controllers/ExperimentsController.php:173
 msgid "This experiment cannot be timestamped!"
-msgstr "This survey cannot be timestamped!"
+msgstr "This form cannot be timestamped!"
 
 #: app/controllers/ExperimentsController.php:195
 msgid "You don't have the rights to delete this experiment."
-msgstr "You don't have the rights to delete this survey."
+msgstr "You don't have the rights to delete this form."
 
 #: app/controllers/ExperimentsController.php:201
 msgid "Experiment successfully deleted"
-msgstr "Survey successfully deleted"
+msgstr "Form successfully deleted"
 
 #: app/controllers/ResetPasswordController.php:71
 #, php-format
@@ -240,11 +240,11 @@ msgstr ""
 
 #: app/controllers/UcpController.php:74
 msgid "Experiment template successfully added."
-msgstr "Survey template successfully added."
+msgstr "Form template successfully added."
 
 #: app/views/ExperimentsView.php:74
 msgid "Experiment was timestamped by"
-msgstr "Survey was timestamped by"
+msgstr "Form was timestamped by"
 
 #: app/classes/Email.php:102
 msgid "[eLabFTW] Test email"
@@ -268,15 +268,15 @@ msgstr ""
 
 #: app/models/Experiments.php:347
 msgid "This experiment was locked by"
-msgstr "This survey was locked by"
+msgstr "This form was locked by"
 
 #: app/models/Experiments.php:349
 msgid "You don't have the rights to unlock this."
-msgstr "Vous n'avez pas les droits suffisants pour vérouiller/déverouiller."
+msgstr "You don't have the rights to unlock this."
 
 #: app/models/Experiments.php:355
 msgid "You cannot unlock or edit in any way a timestamped experiment."
-msgstr "You cannot unlock or edit in any way a timestamped survey."
+msgstr "You cannot unlock or edit in any way a timestamped form."
 
 #: app/models/Comments.php:101
 msgid "[eLabFTW] New comment posted"
@@ -285,11 +285,11 @@ msgstr "[surveyo] New comment posted"
 #: app/models/Comments.php:108
 #, php-format
 msgid "Hi. %s left a comment on your experiment. Have a look: %s"
-msgstr "Hi. %s left a comment on your survey. Have a look: %s"
+msgstr "Hi. %s left a comment on your form. Have a look: %s"
 
 #: app/models/Status.php:224
 msgid "Remove all experiments with this status before deleting this status."
-msgstr "Remove all surveys with this status before deleting this status."
+msgstr "Remove all forms with this status before deleting this status."
 
 #: sysconfig.php:21
 msgid "eLabFTW Configuration"
