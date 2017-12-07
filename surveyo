@@ -147,6 +147,14 @@ function update() {
 # INSTALL COMMANDS
 # @TODO: Must be refactored for this project.
 
+function git-deploy {
+    cd $CODE_DIR
+    git pull
+    composer install
+    yarn install
+    echo "Don't forget to execute DB migration files if needed."
+}
+
 # # install pip and docker-compose, get elabftw.yml and configure it with sed
 # function install() {
 #     # init vars
