@@ -42,8 +42,9 @@ function help() {
         compile-messages  Compile translation files
         help              Show this text
         info              Display the configuration variables and status
-        logs              Show logs of the containers
         php-logs          Show last 20 lines of nginx error log
+        web-logs          Show logs of the 'surveyo-web' containers
+        mysql-logs        Show logs of the 'surveyo-mysql' containers
         restart           Restart the containers
         start             Start the containers
         status            Show status of running containers
@@ -101,14 +102,18 @@ function info() {
     status
 }
 
-function logs() {
-    is-docker-ready
-    docker logs $DOCKER_SERVICE_WEB
-    docker logs $DOCKER_SERVICE_MYSQL
-}
-
 function php-logs() {
     docker exec $DOCKER_SERVICE_WEB tail -n 20 /var/log/nginx/error.log
+}
+
+function web-logs() {
+    is-docker-ready
+    docker logs $DOCKER_SERVICE_WEB
+}
+
+function mysql-logs() {
+    is-docker-ready
+    docker logs $DOCKER_SERVICE_MYSQL
 }
 
 function restart() {
