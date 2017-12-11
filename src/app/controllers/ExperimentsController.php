@@ -34,7 +34,7 @@ try {
         } else {
             $id = $Entity->create();
         }
-        $Response = new RedirectResponse("../../experiments.php?mode=edit&id=" . $id);
+        $Response = new RedirectResponse("../../experiments.php?mode=edit&new=true&id=" . $id);
     }
 
     // UPDATE VISIBILITY
