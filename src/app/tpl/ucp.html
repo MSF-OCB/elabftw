@@ -107,6 +107,7 @@
             />
             <label for='close_warning'>{{ 'Display a warning before closing an edit window/tab?'|trans }}</label>
             <br>
+{# @DEACTIVATED
             <input id='chem_editor' type='checkbox' name='chem_editor'
               {{ Users.userData.chem_editor == '1' ? " checked='checked'" }}
             />
@@ -117,6 +118,7 @@
             />
             <label for='cjk_fonts'>{{ 'Enable Chinese, Japonese and Korean fonts in PDF generation. WARNING: enabling CJK fonts will make the PDF size very big!'|trans }}</label>
             <br>
+#}
             <input id='use_markdown' type='checkbox' name='use_markdown'
               {{ Users.userData.use_markdown == '1' ? " checked='checked'" }}
             />
