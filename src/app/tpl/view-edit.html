@@ -9,12 +9,13 @@
 {% endif %}
 
 <!-- BACK TO LINK -->
-<a href='?mode=show'>
-    <img src='app/img/arrow-left-blue.png' alt='' />{{ 'Back to listing'|trans }}
-</a>
 {% if new == 'true' %}
   <a href='?mode=show' class='entityDestroy' title='delete' alt='delete' data-type='{{ Entity.type }}' data-id='{{ Entity.id }}' data-confirm="{{ 'Delete this?'|trans }}">
-    Cancel, delete and go back.
+    <img src='app/img/arrow-left-blue.png' alt='' /> Cancel creation and go back.
+  </a>
+{% else %}
+  <a href='?mode=show'>
+      <img src='app/img/arrow-left-blue.png' alt='' />{{ 'Back to listing'|trans }}
   </a>
 {% endif %}
 
