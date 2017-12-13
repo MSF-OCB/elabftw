@@ -63,10 +63,11 @@
                     <img src='app/img/team.png' alt='Group' />
                     <label for='team_group_select'>{{ 'Group'|trans }}</label>
                     <select id='team_group_select'>
-                        {% for team_group in TeamGroups.readAll %}
-                            <option value='{{ team_group.id }}'
-                            {{ Entity.entityData.team_group == team_group.id ? ' selected' }}
-                            >{{ team_group.name }}</option>
+                      <option value=''>{{ 'Select a domain'|trans }}</option>
+                        {% for value, teamgroupname in TeamGroups.getTeamGroupsList %}
+                            <option value='{{ value }}'
+                            {{ Entity.entityData.team_group == teamgroupname ? ' selected' }}
+                            >{{ teamgroupname }}</option>
                         {% endfor %}
                     </select>
                 </span>
