@@ -444,7 +444,7 @@ class Users
 
         // ORDER BY
         $new_orderby = null;
-        $whitelistOrderby = array(null, 'cat', 'date', 'title', 'comment');
+        $whitelistOrderby = array(null, 'team_group', 'cat', 'date', 'title', 'comment');
         if (isset($params['orderby']) && in_array($params['orderby'], $whitelistOrderby)) {
             $new_orderby = $params['orderby'];
         }

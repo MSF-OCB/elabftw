@@ -99,6 +99,8 @@ try {
         // load the pref from the user
         if (isset($Entity->Users->userData['orderby'])) {
             $order = $Entity->Users->userData['orderby'];
+            if($order == 'team_group') //a bit brutal. The basic way to organize items is by their status which is here a type...
+              $order = 'cat';
         }
 
         // now get pref from the filter-order-sort menu

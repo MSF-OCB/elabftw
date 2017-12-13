@@ -71,6 +71,9 @@ abstract class AbstractEntity
     /** @var string $categoryFilter inserted in sql */
     public $categoryFilter = '';
 
+    /** @var string $teamgroupFilter inserted in sql */
+    public $teamgroupFilter = '';
+
     /** @var string $tagFilter inserted in sql */
     public $tagFilter = '';
 
@@ -249,11 +252,12 @@ abstract class AbstractEntity
             $this->bodyFilter . ' ' .
             $this->bookableFilter . ' ' .
             $this->categoryFilter . ' ' .
+            $this->teamgroupFilter . ' ' .
             $this->tagFilter . ' ' .
             $this->queryFilter . ' ' .
             $this->visibilityFilter . ' ' .
             " GROUP BY id ORDER BY " . $this->order . " " . $this->sort . " " . $this->limit;
-
+//@TODO echo "SQL:".$sql."///".$this->teamgroupFilter;
         $req = $this->Db->prepare($sql);
         $req->bindParam(':team', $this->Users->userData['team']);
         $req->execute();

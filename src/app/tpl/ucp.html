@@ -42,6 +42,7 @@
                 <label for='orderby'>{{ 'Order by:'|trans }}</label>
                 <select id='orderby' name='orderby'>
                     <option value='default' {{ Users.userData.orderby == null ? ' selected' }}>{{ 'Use default'|trans }}</option>
+                    <option value='team_group' {{ Users.userData.orderby == 'team_group' ? ' selected' }}>{{ 'Domain'|trans }}</option>
                     <option value='cat' {{ Users.userData.orderby == 'cat' ? ' selected' }}>{{ 'Category'|trans }}</option>
                     <option value='date' {{ Users.userData.orderby == 'date' ? ' selected' }}>{{ 'Date'|trans }}</option>
                     <option value='title' {{ Users.userData.orderby == 'title' ? ' selected' }}>{{ 'Title'|trans }}</option>

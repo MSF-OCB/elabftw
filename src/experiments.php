@@ -105,6 +105,13 @@ try {
             $Entity->categoryFilter = " AND status.id = " . $Request->query->get('cat');
             $searchType = 'filter';
         }
+        // TEAM GROUPS FILTER
+        $TeamGroups = new TeamGroups($Entity->Users);
+        if (Tools::checkId($Request->query->get('grp'))) {
+            $Entity->teamgroupFilter = " AND team_groups.id = " . $Request->query->get('grp');
+            $searchType = 'grp';
+        }
+
         // TAG FILTER
         if ($Request->query->get('tag') != '') {
             $tag = filter_var($Request->query->get('tag'), FILTER_SANITIZE_STRING);
@@ -136,8 +143,8 @@ try {
         }
 
         if ($order === 'cat') {
-            $Entity->order = 'experiments.team_group';//'status.ordering';
-        } elseif ($order === 'date' || $order === 'rating' || $order === 'title') {
+            $Entity->order = 'status.ordering'; //'experiments.team_group';
+        } elseif ($order === 'date' || $order === 'rating' || $order === 'title' || $order === 'team_group') {
             $Entity->order = 'experiments.' . $order;
         # @DEACTIVATED } elseif ($order === 'comment') {
         # @DEACTIVATED     $Entity->order = 'experiments_comments.recent_comment';

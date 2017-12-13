@@ -51,6 +51,17 @@
     <input type='hidden' name='tag' value='{{ tag }}' />
     <input type='hidden' name='q' value='{{ query }}' />
 
+    <!-- GROUP -->
+{% if Entity.type == 'experiments' %}
+<select name='grp' style='-moz-appearance:none' class='form-control select-filter-status'>
+    <option value=''>{{ Entity.type == 'experiments' ? 'Filter by domain'|trans : 'Filter by domain'|trans }}</option>
+    {% for team_group in TeamGroups.readAll %}
+        <option value='{{ team_group.id }}' {{ App.Request.query.get('grp') == team_group.id ? ' selected' }}>
+          {{ team_group.name }}</option>
+    {% endfor %}
+  </select>
+  <button class='btn btn-elab submit-filter'>{{ 'Filter'|trans }}</button>
+{% endif %}
     <!-- CATEGORY -->
 <select name='cat' style='-moz-appearance:none' class='form-control select-filter-status'>
     <option value=''>{{ Entity.type == 'experiments' ? 'Filter status'|trans : 'Filter by type'|trans }}</option>
@@ -66,8 +77,11 @@
 <!-- ORDER -->
 <select name='order' style='-moz-appearance:none' class='form-control select-order'>
     <option value=''>{{ 'Order by'|trans }}</option>
-    <option value='cat' {{ order == 'cat' ? 'selected' }}>{{ 'Category'|trans }}</option>
-  <option value='date' {{ order == 'date' ? 'selected' }}>{{ 'Date'|trans }}</option>
+    {% if Entity.type == 'experiments' %}<!-- we don't want to order by team_group for database elements -->
+      <option value='team_group' {{ order == 'team_group' ? 'selected' }}>{{ 'Domain'|trans }}</option>
+    {% endif %}
+    <option value='cat' {{ order == 'cat' ? 'selected' }}>{{ Entity.type == 'experiments' ? 'Status'|trans : 'Type'|trans }}</option>
+    <option value='date' {{ order == 'date' ? 'selected' }}>{{ 'Date'|trans }}</option>
     {% if Entity.type == 'database' %}
         <option value='rating' {{ order == 'rating' ? 'selected' }}>{{ 'Rating'|trans }}</option>
     {% else %}
@@ -140,21 +154,36 @@
     {% endif %}
     <div class='row display-flex'>
       {% set previous_group = 'n' %}
+      {% set cattitle = 'n' %}
+      {% set showtitle = '0' %}
+      {% if Entity.type != 'items' %}
+          {% if order == 'team_group' %}
+            {% set showtitle = '1' %}
+          {% endif %}
+      {% else %}
+        {% if order == 'cat' %}
+          {% set showtitle = '1' %}
+        {% endif %}
+      {% endif %}
+
     {% for item in itemsArr %}
         {% set permissions = Entity.getPermissions(item) %}
         {% if permissions.read %}
-            {# dim the experiment a bit if it's not yours #}
-            {% set opacity = '1' %}
+            {# dim the experiment a bit if it's yours #}
+            {% set opacity = '0.8' %}
             {% if (Entity.Users.userid != item.userid) and Entity.type == 'experiments' %}
-                {% set opacity = '0.9' %}
+                {% set opacity = '1' %}
             {% endif %}
+
             {% if Entity.Users.userData.single_column_layout %}
+
               {% if Entity.type == 'items' %}
                 {% set cattitle = item.category %}
               {%else%}
                 {% set cattitle = item.team_group_name %}
               {% endif %}
-              {% if (previous_group != cattitle) %}
+
+              {% if ((previous_group != cattitle) and (showtitle == '1')) %}
                 <h2>{{ cattitle }}</h2>
                 {% set previous_group = cattitle %}
               {% endif %}
@@ -207,11 +236,11 @@
                     {% if item.has_attachment %}
                         <img src='app/img/attached.png' alt='file attached' />
                     {% endif %}
-
+                {# @DEACTIVATED
                     {% if Entity.type == 'items' %}
                         {{ item.rating|stars|raw }}
                     {% endif %}
-
+                #}
                     {% if item.tags is not null %}
                     <span class='tags'><img src='app/img/tags.png' alt='tags' />
                         {% set tagsArr = item.tags|split('|') %}
