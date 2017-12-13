@@ -13,8 +13,10 @@
             <img src='app/img/eye.png' alt='eye' />{{ Ev.getVisibility }}
         </span>
 {% else %}
-    <section class='box'>
+  {# @DEACTIVATED
+      <section class='box'>
         <span class='align_right'>{{ Entity.entityData.rating|stars|raw }}</span>
+    #}
 {% endif %}
 
 <!-- TITLE : click on it to go to edit mode only if we are not in read only mode -->
