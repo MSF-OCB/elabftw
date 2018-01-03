@@ -141,9 +141,15 @@ class UploadsView
             $html .= $comment;
         }
 
-        if ($mode === 'edit' && preg_match('/(jpg|jpeg|png|gif|svg)$/i', $ext)) {
-            $html .= "<div class='inserter clickable' data-link='" . $upload['long_name'] .
-                "'><img src='app/img/show-more.png' /> <p class='inline'>" . _('Insert in text at cursor position') . "</p></div>";
+        if ($mode === 'edit') {
+          if (preg_match('/(jpg|jpeg|png|gif|svg)$/i', $ext)) {
+            $html .= "<div class='inserter clickable' data-type='img' data-link='" . $upload['long_name'] . "'>
+            <img src='app/img/show-more.png' /> <p class='inline'>" . _('Insert in text at cursor position') . "</p></div>";
+          }
+          else {
+            $html .= "<div class='inserter clickable' data-type='oth' data-thumb='/app/img/attached.png' data-real_name='" . $upload['real_name'] ."' data-link='" . $linkUrl ."'>
+            <img src='app/img/show-more.png' /> <p class='inline'>" . _('Insert in text at cursor position') . "</p></div>";
+          }
         }
         $html .= "</div></div></div>";
 

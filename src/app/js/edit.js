@@ -301,7 +301,12 @@ $(document).ready(function() {
 
     // INSERT IMAGE AT CURSOR POSITION IN TEXT
     $(document).on('click', '.inserter',  function() {
-        var imgLink = "<img src='app/download.php?f=" + $(this).data('link') + "' />";
+        if ($(this).data('type')=='img') {
+          var imgLink = "<img src='app/download.php?f=" + $(this).data('link') + "' />";
+        }
+        else {
+          var imgLink = "<a href='" + $(this).data('link') + "'><img src='" + $(this).data('thumb') + "' valign='top' display='inline-block' /><i>" + $(this).data('real_name') + "</i></a>&nbsp;";
+        }
         tinymce.activeEditor.execCommand('mceInsertContent', false, imgLink);
     });
 
