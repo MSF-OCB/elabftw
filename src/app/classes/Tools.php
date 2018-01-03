@@ -255,18 +255,18 @@ class Tools
     public static function getCalendarLang($lang)
     {
         $map = array(
-            'ca_ES' => 'ca',
-            'de_DE' => 'de',
+            //'ca_ES' => 'ca',
+            //'de_DE' => 'de',
             'en_GB' => 'en',
-            'es_ES' => 'es',
-            'fr_FR' => 'fr',
-            'it_IT' => 'it',
-            'pl_PL' => 'pl',
-            'pt_BR' => 'pt-br',
-            'pt_PT' => 'pt',
-            'ru_RU' => 'ru',
-            'sl_SI' => 'sl',
-            'zh_CN' => 'zh-cn'
+            //'es_ES' => 'es',
+            //'fr_FR' => 'fr',
+            //'it_IT' => 'it',
+            //'pl_PL' => 'pl',
+            //'pt_BR' => 'pt-br',
+            //'pt_PT' => 'pt',
+            //'ru_RU' => 'ru',
+            //'sl_SI' => 'sl',
+            //'zh_CN' => 'zh-cn'
         );
         return $map[$lang];
     }
@@ -279,18 +279,18 @@ class Tools
     public static function getLangsArr()
     {
         $langs = array(
-            'ca_ES' => 'Spanish (Catalan)',
-            'de_DE' => 'German',
+            //'ca_ES' => 'Spanish (Catalan)',
+            //'de_DE' => 'German',
             'en_GB' => 'English (UK)',
-            'es_ES' => 'Spanish',
-            'fr_FR' => 'French',
-            'it_IT' => 'Italian',
-            'pl_PL' => 'Polish',
-            'pt_BR' => 'Portuguese (Brazilian)',
-            'pt_PT' => 'Portuguese',
-            'ru_RU' => 'Russian',
-            'sl_SI' => 'Slovenian',
-            'zh_CN' => 'Chinese Simplified'
+            //'es_ES' => 'Spanish',
+            //'fr_FR' => 'French',
+            //'it_IT' => 'Italian',
+            //'pl_PL' => 'Polish',
+            //'pt_BR' => 'Portuguese (Brazilian)',
+            //'pt_PT' => 'Portuguese',
+            //'ru_RU' => 'Russian',
+            //'sl_SI' => 'Slovenian',
+            //'zh_CN' => 'Chinese Simplified'
         );
 
         return $langs;
