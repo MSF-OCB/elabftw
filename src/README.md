@@ -1,3 +1,18 @@
+# surveyo aka jukebox
+
+**surveyo** is a repository for surveys and assessments developped by MSF OCB eHealth team for the Emergency Cell.
+**jukebox** is the final (I hope so) name given to surveyo, so it is the same.
+This platform is based on eLabFTW, an electronic lab notebook manager for research teams. Several changes were made to make it look as we want.
+- Easily find validated surveys and assessment and adapt them as you wish
+- Learn more about survey and assessment conduction thanks to the knowledge base
+- Get in touch with the referent who created templates
+
+
+
+To learn more on how it works, read about eLabFTW below.
+
+# eLabFTW
+
 ![elabftw logo](https://i.imgur.com/hq6SAZf.png)
 
 [Official website](https://www.elabftw.net) | [Live demo](https://demo.elabftw.net) | [Documentation](https://doc.elabftw.net)
