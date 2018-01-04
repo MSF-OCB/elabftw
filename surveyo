@@ -91,11 +91,7 @@ function backup() {
 }
 
 function clear-cache() {
-    if is-root; then
-        rm -rf $CODE_DIR/src/uploads/tmp/*
-    else
-        echo "ERROR: Use sudo to execute this command."
-    fi
+    rm -rf $CODE_DIR/src/uploads/tmp/*
 }
 
 function compile-messages() {
@@ -135,11 +131,7 @@ function restart() {
 }
 
 function restart-web() {
-    if is-root; then
-        docker exec $DOCKER_SERVICE_WEB nginx -s reload
-    else
-        echo "ERROR: Use sudo to execute this command."
-    fi
+    docker exec $DOCKER_SERVICE_WEB nginx -s reload
 }
 
 function start() {
