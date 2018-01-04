@@ -41,6 +41,7 @@ function help() {
     Commands:
 
         backup            Backup your installation
+        clear-cache       Clear Twig templates cache
         compile-messages  Compile translation files
         git-deploy        Deploy from the git repo
         help              Show this text
@@ -49,6 +50,7 @@ function help() {
         web-logs          Show logs of the 'surveyo-web' containers
         mysql-logs        Show logs of the 'surveyo-mysql' containers
         restart           Restart the containers
+        restart-web       Restart the web server
         start             Start the containers
         status            Show status of running containers
         stop              Stop the containers
@@ -88,6 +90,14 @@ function backup() {
     echo "Backup done."
 }
 
+function clear-cache() {
+    if is-root; then
+        rm -rf $CODE_DIR/src/uploads/tmp/*
+    else
+        echo "ERROR: Use sudo to execute this command."
+    fi
+}
+
 function compile-messages() {
     for po_file in `find $CODE_DIR/src/app/locale -name "messages.po"`; do
         echo "Compiling ${po_file}"
@@ -122,6 +132,14 @@ function mysql-logs() {
 function restart() {
     stop
     start
+}
+
+function restart-web() {
+    if is-root; then
+        docker exec $DOCKER_SERVICE_WEB nginx -s reload
+    else
+        echo "ERROR: Use sudo to execute this command."
+    fi
 }
 
 function start() {
@@ -565,7 +583,7 @@ fi
 # available commands
 declare -A commands
 # @TODO: install uninstall
-for valid in backup compile-messages git-deploy help info php-logs web-logs mysql-logs start status stop restart update; do
+for valid in backup clear-cache compile-messages git-deploy help info php-logs web-logs mysql-logs start status stop restart restart-web update; do
     commands[$valid]=1
 done
 
