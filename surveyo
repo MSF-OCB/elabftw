@@ -547,7 +547,7 @@ function is-docker-ready() {
 }
 
 function is-root() {
-    [ $EUID != 0 ] && return 0 || return 1
+    [ `whoami` == "root" ] && return 1 || return 0
 }
 
 
