@@ -130,7 +130,7 @@ msgstr ""
 
 #: /tmp/elabftw-twig-cache/da/da2f49cdd1c5854a7de63e3e37e57303e51d2fb2312be2e110802d6e1559f0f4.php:370
 msgid "Unique eLabID:"
-msgstr "Unique surveyoID:"
+msgstr "Unique jukeboxID:"
 
 #: /tmp/elabftw-twig-cache/c1/c127a9fef5016167f452c7da5f923edcee55b50cd25e82a044f6a44ccf16fddb.php:311
 msgid "Experiments steps"
@@ -168,7 +168,7 @@ msgid ""
 msgstr ""
 "This should point to the chain of certificates used by your external "
 "timestamping provider to sign the timestamps.%sLocal path relative to "
-"surveyo installation directory. You should add it in the 'uploads' folder. "
+"jukebox installation directory. You should add it in the 'uploads' folder. "
 "The file needs to be in %sPEM-encoded (ASCII)%s format!"
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:297
@@ -189,7 +189,7 @@ msgstr "This is the default text when someone creates a form."
 
 #: /tmp/elabftw-twig-cache/cb/cb8dd7b931549d47fe7ea10f0585db82828815a192420990911cc487d7c768ab.php:898
 msgid "This page will allow you to import a .elabftw.zip archive."
-msgstr "This page will allow you to import a .surveyo.zip archive."
+msgstr "This page will allow you to import a .jukebox.zip archive."
 
 #: /tmp/elabftw-twig-cache/df/dfa23f7a483d5898025ad984ce590aa552b89fbece6bdea450e574e2102fcc58.php:264
 msgid "Show experiments from the team on the Experiments page?"
@@ -213,7 +213,7 @@ msgstr "Contenu du modèle"
 
 #: /tmp/elabftw-twig-cache/f1/f1e123c3db1e29892352f0ad963c03f9a95bf05cba97d56538dc9b8f46dbe41b.php:276
 msgid "Welcome to eLabFTW. Use the 'Create new' button to get started!"
-msgstr "Welcome to surveyo. Use the 'Create new' button to get started!"
+msgstr "Welcome to jukebox. Use the 'Create new' button to get started!"
 
 #: app/controllers/ExperimentsController.php:173
 msgid "This experiment cannot be timestamped!"
@@ -235,7 +235,7 @@ msgid ""
 "password : %s"
 msgstr ""
 "Hi. Someone (probably you) with the IP address: %s and user agent %s "
-"requested a new password on surveyo. Please follow this link to reset your "
+"requested a new password on jukebox. Please follow this link to reset your "
 "password : %s"
 
 #: app/controllers/UcpController.php:74
@@ -248,22 +248,22 @@ msgstr "Form was timestamped by"
 
 #: app/classes/Email.php:102
 msgid "[eLabFTW] Test email"
-msgstr "[surveyo] Test email"
+msgstr "[jukebox] Test email"
 
 #: app/classes/Email.php:108
 msgid "Congratulations, you correctly configured eLabFTW to send emails :)"
-msgstr "Congratulations, you correctly configured surveyo to send emails :)"
+msgstr "Congratulations, you correctly configured jukebox to send emails :)"
 
 #: app/models/Users.php:224
 msgid "[eLabFTW] New user registered"
-msgstr "[surveyo] New user registered"
+msgstr "[jukebox] New user registered"
 
 #: app/models/Users.php:230
 msgid ""
 "Hi. A new user registered on elabftw. Head to the admin panel to validate "
 "the account: "
 msgstr ""
-"Hi. A new user registered on surveyo. Head to the admin panel to validate "
+"Hi. A new user registered on jukebox. Head to the admin panel to validate "
 "the account: "
 
 #: app/models/Experiments.php:347
@@ -280,7 +280,7 @@ msgstr "You cannot unlock or edit in any way a timestamped form."
 
 #: app/models/Comments.php:101
 msgid "[eLabFTW] New comment posted"
-msgstr "[surveyo] New comment posted"
+msgstr "[jukebox] New comment posted"
 
 #: app/models/Comments.php:108
 #, php-format
@@ -293,4 +293,4 @@ msgstr "Remove all forms with this status before deleting this status."
 
 #: sysconfig.php:21
 msgid "eLabFTW Configuration"
-msgstr "surveyo Configuration"
+msgstr "jukebox Configuration"

@@ -66,7 +66,7 @@ class MakePdf extends AbstractMake
         // set meta data
         $mpdf->SetAuthor($this->Entity->entityData['fullname']);
         $mpdf->SetTitle($this->Entity->entityData['title']);
-        // $mpdf->SetSubject('Surveyo');
+        // $mpdf->SetSubject('jukebox');
         $mpdf->SetKeywords(strtr($this->Entity->entityData['tags'], '|', ' '));
         $mpdf->WriteHTML($this->getContent());
         $mpdf->PDFA = true;
@@ -106,7 +106,7 @@ class MakePdf extends AbstractMake
     private function addElabid()
     {
         if ($this->Entity instanceof Experiments) {
-            return "<p class='elabid'>Surveyo ID : " . $this->Entity->entityData['elabid'] . "</p>";
+            return "<p class='elabid'>jukebox ID : " . $this->Entity->entityData['elabid'] . "</p>";
         }
         return "";
     }
