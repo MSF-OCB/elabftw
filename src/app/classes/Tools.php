@@ -342,6 +342,6 @@ class Tools
      */
     public static function getCleanTitle($title)
     {
-        return str_replace(array('#', "&39;", "&34;"), '', $title) . " - eLabFTW";
+        return str_replace(array('#', "&39;", "&34;"), '', $title) . " - ". "jukebox";
     }
 }
