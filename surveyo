@@ -164,6 +164,8 @@ function git-deploy {
     cd $CODE_DIR/src
     composer install
     yarn install
+    clear-cache
+    restart-web
 
     echo
     echo "WARNING: Don't forget to execute DB migration files if needed."
