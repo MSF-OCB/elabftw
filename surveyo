@@ -41,6 +41,7 @@ function help() {
     Commands:
 
         backup            Backup your installation
+        clear-cache       Clear Twig templates cache
         compile-messages  Compile translation files
         git-deploy        Deploy from the git repo
         help              Show this text
@@ -49,6 +50,7 @@ function help() {
         web-logs          Show logs of the 'surveyo-web' containers
         mysql-logs        Show logs of the 'surveyo-mysql' containers
         restart           Restart the containers
+        restart-web       Restart the web server
         start             Start the containers
         status            Show status of running containers
         stop              Stop the containers
@@ -88,6 +90,10 @@ function backup() {
     echo "Backup done."
 }
 
+function clear-cache() {
+    rm -rf $CODE_DIR/src/uploads/tmp/*
+}
+
 function compile-messages() {
     for po_file in `find $CODE_DIR/src/app/locale -name "messages.po"`; do
         echo "Compiling ${po_file}"
@@ -124,6 +130,10 @@ function restart() {
     start
 }
 
+function restart-web() {
+    docker exec $DOCKER_SERVICE_WEB nginx -s reload
+}
+
 function start() {
     docker-compose -f "$DOCKER_CONF_FILE" up -d
 }
@@ -154,6 +164,8 @@ function git-deploy {
     cd $CODE_DIR/src
     composer install
     yarn install
+    clear-cache
+    restart-web
 
     echo
     echo "WARNING: Don't forget to execute DB migration files if needed."
@@ -565,7 +577,7 @@ fi
 # available commands
 declare -A commands
 # @TODO: install uninstall
-for valid in backup compile-messages git-deploy help info php-logs web-logs mysql-logs start status stop restart update; do
+for valid in backup clear-cache compile-messages git-deploy help info php-logs web-logs mysql-logs start status stop restart restart-web update; do
     commands[$valid]=1
 done
 
