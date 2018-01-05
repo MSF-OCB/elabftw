@@ -450,7 +450,7 @@ class Users
         }
 
         // SORT
-        $new_sort = 'desc';
+        $new_sort = 'asc';
         if (isset($params['sort']) && ($params['sort'] === 'asc' || $params['sort'] === 'desc')) {
             $new_sort = $params['sort'];
         }

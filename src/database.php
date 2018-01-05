@@ -94,7 +94,7 @@ try {
             $searchType = 'query';
         }
         // ORDER
-        $order = '';
+        $order = 'cat'; //@TODO set the value by default in SQL
 
         // load the pref from the user
         if (isset($Entity->Users->userData['orderby'])) {
