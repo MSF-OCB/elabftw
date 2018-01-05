@@ -327,7 +327,7 @@ class Users
             FROM users
             LEFT JOIN teams ON (users.team = teams.team_id)
             LEFT JOIN groups ON (users.usergroup = groups.group_id)
-            WHERE " . $valSql . " users.team = :team AND groups.is_visitor = 0";
+            WHERE " . $valSql . " users.team = :team";// . " AND groups.is_visitor = 0" //I removed this part as visitors where not appearing in admin panel
         $req = $this->Db->prepare($sql);
         if (is_int($validated)) {
             $req->bindValue(':validated', $validated);
