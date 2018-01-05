@@ -60,7 +60,7 @@
             <th>{{ 'Website'|trans }}</th>
             <th>{{ 'Skype'|trans }}</th>
         </tr>
-        {% for user in App.Users.readAllFromTeam %}
+        {% for user in App.Users.readAllFromTeam(1) %}
         <tr>
             <td><a href='profile.php?id={{ user.userid }}'>
                     <span
