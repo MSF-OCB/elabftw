@@ -77,7 +77,7 @@ a:hover {
 }
 
 ul, li {
-    list-style: none;
+    /*list-style: none;*/
 }
 
 .clean-list {
