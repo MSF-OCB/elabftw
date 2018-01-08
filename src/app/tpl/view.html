@@ -30,9 +30,9 @@
 <!-- DATE -->
 <div>
     <span class='date' style='font-size:80%;'><img src='app/img/calendar.png' title='date' alt='Date :' />{{ Entity.entityData.date|kdate }}</span>
-    <span class='author' style='font-size:80%;'><img class='image' alt='Author' src='app/img/user.png' width="12px"/><i>{{ Entity.entityData.fullname }}</i></span>
+    <span class='author' style='font-size:80%;'><img class='image' alt='Author' src='app/img/user.png' width="12px"/><i><a href='profile.php?id={{Entity.entityData.userid}}'>{{ Entity.entityData.fullname }}</a></i></span>
     {# @TODO <span class='team'><img class='image' alt='Team' src='app/img/team.png' />{{ Entity.entityData.team_name }}</span> #}
-    <span class='group'><img class='image' alt='Group' src='app/img/group.png' />{{ Entity.entityData.team_group_name }}</span>
+    <span class='group' style='font-size:80%;'> / {{ Entity.entityData.team_group_name }}</span>
 </div>
 
 <!-- begin action buttons row -->
