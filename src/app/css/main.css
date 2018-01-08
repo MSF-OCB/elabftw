@@ -985,7 +985,7 @@ input[type='checkbox']{
     border-radius: 5px;
     margin-top: 10px;
     color:black;
-    font-size: 16px;
+    /*font-size: 16px;*/
     padding: 5px;
 }
 
