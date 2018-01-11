@@ -280,7 +280,7 @@ class Auth
         // don't allow access to these pages
         $forbiddenPagesArr = array(
             'ucp.php',
-            'EntityController.php',
+            // @TODO: Block also this (or just for delete)? 'ExperimentsController.php',
         );
         if (in_array($scriptName, $forbiddenPagesArr)) {
             $this->_redirect();
@@ -300,6 +300,17 @@ class Auth
             // allow all actions but only on one item
             case 'make.php':
                 if (strpos($this->Request->query->get('id'), " ") !== false) {
+                    $this->_redirect();
+                }
+                break;
+
+            // allow only "get tag list", "get mention list", "get body"
+            case 'EntityController.php':
+                $allow = false;
+                $allow |= $this->Request->query->has('term') && $this->Request->query->has('tag');
+                $allow |= $this->Request->query->has('term') && $this->Request->query->has('mention');
+                $allow |= $this->Request->request->has('getBody');
+                if (!$allow) {
                     $this->_redirect();
                 }
                 break;
