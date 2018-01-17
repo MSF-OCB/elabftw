@@ -181,7 +181,7 @@ try {
             $itemsArr = $Entity->readRelated($Request->query->get('related'));
         } else {
             // filter by user only if we are not making a search
-            if (!$Users->userData['show_team'] && ($searchType === '' || $searchType === 'filter')) {
+            if (/*!$Users->userData['show_team'] && */($searchType === '' || $searchType === 'filter')) {
                 $Entity->setUseridFilter();
             }
 
