@@ -122,8 +122,12 @@ class Experiments extends AbstractEntity
         $req->execute();
         while ($data = $req->fetch()) {
             $this->setId($data['item_id']);
-            $this->canOrExplode('read');
+            //test here if we can read before putting it in the array.
+            //$permissions = $this->getPermissions($data['item_id']);
+            //if ($permissions['read']) {
+              //$this->canOrExplode('read');
             $itemsArr[] = $this->read();
+          //}
         }
 
         return $itemsArr;
